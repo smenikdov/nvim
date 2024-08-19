@@ -46,8 +46,7 @@ return {
             { "<leader>e",        ":Neotree toggle<CR>",                  desc = "Toggle tree",         hidden = true },
 
             { "<leader>f",        group = "Find" },
-            { "<leader>ff",       "yiw:Telescope find_files<CR><C-r>0",   desc = "Find File" },
-            { "<leader>ft",       "yiw:Telescope live_grep<CR><C-r>0",    desc = "Find Text" },
+            { "<leader>ff",       ":SmartFind<CR>",                       desc = "Find" },
             { "<leader>fb",       ":Telescope buffers<CR>",               desc = "Find Buffer" },
             { "<leader>fh",       ":Telescope help_tags<CR>",             desc = "Find Help" },
             { "<leader>fc",       ":Telescope git_commits<CR>",           desc = "Find Commit" },
@@ -128,7 +127,7 @@ return {
             },
             {
                 "<leader>t3",
-                ":3ToggleTerm name='Terminal 3'<CR>",
+                ":6ToggleTerm name='Terminal 3'<CR>",
                 desc = "Terminal 3",
             },
         })

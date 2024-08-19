@@ -1,0 +1,44 @@
+https://github.com/nanotee/nvim-lua-guide
+
+type()
+
+vim.g: global variables
+vim.b: buffer variables
+vim.w: window variables
+vim.t: tabpage variables
+vim.v: predefined Vim variables
+vim.env: environment variables
+vim.fn vimscript functions
+vim.api api functions
+vim.keymap set del kaymaps
+vim.opt options, call set functions
+
+BUFFER
+vim.api.nvim_buf_delete
+vim.api.nvim_buf_set_lines
+vim.api.nvim_buf_get_lines
+vim.api.nvim_buf_set_option
+vim.api.nvim_buf_get_option
+vim.api.nvim_buf_set_name
+vim.api.nvim_buf_get_name
+vim.fn.expand         -- currentBuffer path / name / type
+vim.api.nvim_get_current_buf  -- index
+
+WINDOW
+vim.api.nvim_win_set_option
+
+Текст
+
+Общие
+vim.api.nvim_command
+
+FILES
+vim.fn.readfile
+vim.fn.writefile
+vim.fn.findfile       -- **  .;
+vim.fn.finddir 
+vim.fn.isdirectory
+vim.fn.getcwd
+vim.fn.glob
+vim.fn.globpath
+vim.cmd.edit

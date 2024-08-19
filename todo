@@ -1,9 +1,31 @@
-Vue 
-Prettier
-Git signs
-Cmp
+TODOS
+? Vue 2 
+! Prettier
+! Git signs
+? Cmp
 No Name buffers fix
-Spell check
+! Spell check
 DB
-Search by api
 Check for oli.nvim
+Screen moving with cursor
+Dashboard and projects
+Package json plugin
+
+SCRIPTS
+!1 smart search
+2 env db manager
+!3 vue tools
+4 snippet manager
+5 api search
+6 npm version to lualine
+7 macros manager
+!8 quasar docs
+9 sms add command
+10 custom emmet
+11 db to lualine
+12 add import
+13 buffer manager
+14 lualine yandex tracker
+
+QUESTIONS
+1 How update branch without checkout
