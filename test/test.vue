@@ -11,6 +11,7 @@
 							src="../assets/images/logo-head-white.svg"
 						/>
 					</div>
+                    <ButtonDefault />
 					<div
 						class="menu"
 						:style="{
@@ -62,9 +63,9 @@
 							</a>
 						</div>
 					</div>
-					<div class="all-rights-reserved">
+					<q-dialog class="all-rights-reserved">
 						© {{ new Date().getFullYear() }} ООО «ВДело». ОГРН 1206600030647. Все права защищены.
-					</div>
+					</q-dialog>
 				</div>
 			</div>
 		</div>
@@ -72,6 +73,8 @@
 </template>
 
 <script>
+import ButtonDefault from './test.js';
+
 export default {
     name:  'Footer',
     props: {
@@ -82,6 +85,7 @@ export default {
     },
     methods: {
         handleClick() {
+            this.isActiveAos = true;
             console.log(123);
         },
     },

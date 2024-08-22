@@ -1,60 +1,68 @@
 local string_utils = require("scripts.utils.string")
 
-local function is_constant(word, line)
-    -- TODO
+local function is_variable(word, line)
+    return string.find(word, "^[A-Za-z][A-Za-z0-9_]*$")
 end
 
-local function is_variable(word, line)
-    return string.match(word, "^[A-Za-z][A-Za-z0-9_]*$")
+local function is_constant(word, line)
+    return is_variable(word) and string.find(line, "%$constants%.[.A-Za-z0-9]*" .. word)
 end
 
 local function is_variable_init(word, line)
-    return string.match(line, "const%s+" .. word)
-        or string.match(line, "let%s+" .. word)
-        or string.match(line, "var%s+" .. word)
+    return string.find(line, "const%s+" .. word)
+        or string.find(line, "let%s+" .. word)
+        or string.find(line, "var%s+" .. word)
 end
 
 local function is_vue_variable_init(word, line)
+    return string.find(line, "^%s*" .. word .. "%s*:")
+        or string.find(line, "^%s*" .. word .. "%s*%(")
+        or string.find(line, "^%s*async%s+" .. word .. "%s*%(")
 end
 
 local function is_quasar_component(word, line)
-    return string.match(line, "q-" .. word)
+    return string.find(line, "q%-" .. word)
 end
 
 local function is_export_line(line)
-    return string.match(line, "^%s*export%s*default%s*{")
+    return string.find(line, "^%s*export%s*default%s*{")
 end
 
 local function is_import_line(line)
-    return string.match(line, "^%s*import")
+    return string.find(line, "^%s*import")
 end
 
-local function is_component(name, file)
+local function is_component(name, line)
     -- TODO more checks
-    return string_utils.is_pascal_case(name)
+    return string.find(line, "<%s*" .. name) and string.find(name, "^[A-Z][A-Za-z]+$")
 end
 
 local function is_vue3(file_content)
-    -- TODO
+    for i, line in pairs(file_content) do
+        if string.find(line, "^%s*<script%s+setup") then
+            return true
+        end
+    end
+    return false
 end
 
 local function is_vue_variable(word, line)
-    return string.match(line, "this." .. word)
+    return string.find(line, "this." .. word)
 end
 
 local function is_class_name(word, line)
     -- TODO
-    return string.match(line, "^%s*" .. word .. "%s*:")
+    return string.find(line, "^%s*" .. word .. "%s*:")
 end
 
 local function is_css_property(word, line)
     -- TOOD with - words
-    return string.match(line, "^%s*" .. word .. "%s*:")
+    return string.find(line, "^%s*" .. word .. "%s*:")
 end
 
 local function is_css_value(word, line)
     -- TODO with - words
-    return string.match(line, "^.+:%s" .. word .. ";")
+    return string.find(line, "^.+:%s" .. word .. ";")
 end
 
 local function is_tag_name(word, line)
@@ -62,7 +70,11 @@ local function is_tag_name(word, line)
 end
 
 local function is_dispatch(word, line)
-    return string.match(line, "dispatch(." .. word .. ".)")
+    return string.find(line, "dispatch(." .. word .. ".)")
+end
+
+local function is_template_variable(word, line)
+    return is_variable(word)
 end
 
 return {
@@ -81,4 +93,5 @@ return {
     is_css_value = is_css_value,
     is_tag_name = is_tag_name,
     is_dispatch = is_dispatch,
+    is_template_variable = is_template_variable,
 }

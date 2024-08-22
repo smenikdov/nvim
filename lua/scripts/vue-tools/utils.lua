@@ -70,7 +70,7 @@ end
 
 local function find_index_of_block(block_name, file_content)
     local block = get_block_by_name(block_name)
-    if ~block then
+    if block == nil then
         return -1
     end
     for i, line in pairs(file_content) do

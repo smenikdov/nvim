@@ -1,13 +1,14 @@
 -- https://www.reddit.com/r/neovim/comments/td4yk1/search_buffer_from_lua/
 local buffers_utils = require("scripts.utils.buffers")
+local string_utils = require("scripts.utils.string")
 local vue_tools = require("scripts.vue-tools.init")
 
 local function SmartFind()
     local current_filetype = vim.bo.filetype
-    local current_word = buffers_utils.get_current_word()
+    local current_word = string_utils.trim(buffers_utils.get_current_word())
     local current_line_index = buffers_utils.get_current_line_index()
     local current_buffer_content = buffers_utils.get_current_buffer_content()
-    if ~current_buffer_content then
+    if current_buffer_content == nil then
         -- TODO
         return
     end
@@ -17,7 +18,7 @@ local function SmartFind()
     local is_filetype_css = current_filetype == "css" or current_filetype == "scss" or current_filetype == "sass"
 
     if is_filetype_vue then
-        local is_vue3 = false
+        local is_vue3 = vue_tools.is_vue3(current_buffer_content)
         if (is_vue3) then
             vim.lsp.buf.definition()
         else

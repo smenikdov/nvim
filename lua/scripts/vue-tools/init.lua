@@ -4,11 +4,6 @@ local move = require("scripts.vue-tools.move")
 local show = require("scripts.vue-tools.show")
 local check = require("scripts.vue-tools.check")
 
-local function get_component_path(name, file)
-    -- TODO
-    local path = vim.fn.glob("**/" .. name .. ".vue")
-    return path
-end
 
 local function add_block_item(block_name)
     -- TODO
@@ -18,6 +13,7 @@ local function smart_scipt_definition(word, line, line_index, file_content)
     local is_import_line = check.is_import_line(line)
     if is_import_line then
         move.by_import_line(line)
+        return
     end
 
     local is_export_line = check.is_export_line(line)
@@ -30,11 +26,13 @@ local function smart_scipt_definition(word, line, line_index, file_content)
     local is_constant = check.is_constant(word, line)
     if is_constant then
         move.to_constant(word)
+        return
     end
 
     local is_dispatch = check.is_dispatch(word, line)
     if is_dispatch then
         move.to_dispatch(word)
+        return
     end
 
     local is_variable = check.is_variable(word)
@@ -45,31 +43,30 @@ local function smart_scipt_definition(word, line, line_index, file_content)
             if is_vue_variable_init then
                 show.vue_variable_references(word)
             else
-                move.to_vue_variable_init(word)
+                move.to_vue_variable_init(word, file_content)
             end
         else
             local is_variable_init = check.is_variable_init(word, line)
             if is_variable_init then
                 show.variable_references(word)
             else
-                move.to_variable_init(word)
+                move.to_variable_init(word, file_content)
             end
         end
         return
     end
 
-    vim.cmd("*")
+    vim.cmd("normal! *")
 end
 
 local function smart_template_definition(word, line, line_index, file_content)
-    local is_component = check.is_component(word)
+    local is_component = check.is_component(word, line)
     if is_component then
         move.to_component(word, file_content)
         return
     end
 
     local is_quasar_component = check.is_quasar_component(word, line)
-    -- TODO click on q or -
     if is_quasar_component then
         move.to_quasar_component_docs(word)
         return
@@ -78,14 +75,22 @@ local function smart_template_definition(word, line, line_index, file_content)
     local is_constant = check.is_constant(word, line)
     if is_constant then
         move.to_constant(word)
+        return
     end
 
     local is_dispatch = check.is_dispatch(word, line)
     if is_dispatch then
         move.to_dispatch(word)
+        return
     end
 
-    vim.cmd("*")
+    local is_template_variable = check.is_template_variable(word, line)
+    if is_template_variable then
+        move.to_vue_variable_init(word, file_content)
+        return
+    end
+
+    vim.cmd("normal! *")
 end
 
 local function smart_style_definition(word, line, line_index, file_content)
@@ -103,11 +108,12 @@ local function smart_style_definition(word, line, line_index, file_content)
 
     local is_value = check.is_css_value(word, line)
     if is_value then
-        move.to_css_value_docs(word)
+        -- TODO ?
+        vim.cmd("normal! *")
         return
     end
 
-    vim.cmd("*")
+    vim.cmd("normal! *")
 end
 
 local function get_global_block_type(line_index, file_content)

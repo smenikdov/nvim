@@ -1,7 +1,5 @@
 https://github.com/nanotee/nvim-lua-guide
-
 type()
-
 vim.g: global variables
 vim.b: buffer variables
 vim.w: window variables
@@ -26,7 +24,6 @@ vim.api.nvim_get_current_buf  -- index
 
 WINDOW
 vim.api.nvim_win_set_option
-
 Текст
 
 Общие

@@ -16,7 +16,6 @@ return {
             desc = "Buffer Local Keymaps (which-key)",
         },
     },
-
     config = function(_, opts)
         local wk = require("which-key")
         wk.setup(opts.setup)
@@ -25,7 +24,33 @@ return {
             { "<C-s>", "<Esc>:w<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Save" },
             { "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
             -- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
-            { "<Esc>", "<C-\\><C-n>", mode = "t",               hidden = true, desc = "Quit terminal emulator" },
+            { "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
+
+            { "<C-;>",
+                function()
+                    require("scripts/language").toggle_language_n()
+                end,
+                mode = { "n" },
+                hidden = true,
+                desc = "Toggle language"
+            },
+            { "<C-;>",
+                function()
+                    require("scripts/language").toggle_language_i()
+                end,
+                mode = { "i" },
+                hidden = true,
+                desc = "Toggle language"
+            },
+            { "<C-;>",
+                function()
+                    require("scripts/language").toggle_language_c()
+                end,
+                mode = { "c" },
+                hidden = true,
+                desc = "Toggle language"
+            },
+
             {
                 "<C-\\>",
                 "<C-\\><C-n>:ToggleTerm<CR>",
@@ -105,15 +130,47 @@ return {
                 ":1ToggleTerm name='Master'<CR>",
                 desc = "Terminal Master",
             },
+            { "<leader>tf", group = "Terminal Frontend" },
             {
-                "<leader>tf",
+                "<leader>tff",
                 ":2ToggleTerm name='Frontend'<CR>",
-                desc = "Terminal Frontend",
+                desc = "Terminal Frontendl Open",
             },
             {
-                "<leader>tb",
+                "<leader>tfr",
+                ":T RestartFrontend<CR>",
+                desc = "Terminal Frontend Restart",
+            },
+            {
+                "<leader>tfs",
+                ":T StartFrontend<CR>",
+                desc = "Terminal Frontend Start",
+            },
+            {
+                "<leader>tfS",
+                ":T StopFrontend<CR>",
+                desc = "Terminal Frontend Stop",
+            },
+            { "<leader>tb", group = "Terminal Backend" },
+            {
+                "<leader>tbb",
                 ":3ToggleTerm name='Backend'<CR>",
-                desc = "Terminal Backend",
+                desc = "Terminal Backend Open",
+            },
+            {
+                "<leader>tbr",
+                ":T RestartBackend<CR>",
+                desc = "Terminal Backend Restart",
+            },
+            {
+                "<leader>tbs",
+                ":T StartBackend<CR>",
+                desc = "Terminal Backend Start",
+            },
+            {
+                "<leader>tbS",
+                ":T StopBackend<CR>",
+                desc = "Terminal Backend Stop",
             },
             {
                 "<leader>t1",
@@ -129,6 +186,24 @@ return {
                 "<leader>t3",
                 ":6ToggleTerm name='Terminal 3'<CR>",
                 desc = "Terminal 3",
+            },
+            { "<leader>tp", group = "Terminal Project" },
+            {
+                "<leader>tpp",
+                ":T StartProject<CR>",
+                desc = "Terminal Project Start",
+            },
+            {
+                "<leader>tpi",
+                ":T InstallPackages <CR>",
+                desc = "Terminal Project Install Packages",
+            },
+
+            { "<leader>s", group = "Spell" },
+            {
+                "<leader>ss",
+                ":set spell!<CR>",
+                desc = "Toggle Spell",
             },
         })
     end,
