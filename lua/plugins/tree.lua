@@ -116,18 +116,19 @@ return {
 		-- see `:h neo-tree-custom-commands-global`
 		commands = {},
 		window = {
-			position = "left",
+			position = "right",
 			width = 40,
 			mapping_options = {
 				noremap = true,
 				nowait = true,
 			},
 			mappings = {
-				["space"] = {
+				[";"] = {
 					"toggle_node",
-					nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+					-- nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 				},
 				["<2-LeftMouse>"] = "open",
+				["<space>"] = "",
 				["<cr>"] = "open",
 				["<esc>"] = "cancel", -- close preview or floating neo-tree window
 				["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },

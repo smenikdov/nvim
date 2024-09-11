@@ -30,7 +30,7 @@ local function get_current_word()
 end
 
 local function get_current_line_index()
-    return vim.api.nvim_win_get_cursor(0)[1]
+    -- return vim.api.nvim_win_get_cursor(0)[1]
 end
 
 local function get_current_buffet_path()
@@ -45,6 +45,10 @@ local function get_current_buffet_path()
     return filepath
 end
 
+local function get_current_buffer_name()
+    return vim.fn.expand("%:t")
+end
+
 return {
     get_current_buffer_index = get_current_buffer_index,
     get_current_buffer_content = get_current_buffer_content,
@@ -52,4 +56,5 @@ return {
     move_cursor_in_current_window = move_cursor_in_current_window,
     get_current_line_index = get_current_line_index,
     get_current_buffet_path = get_current_buffet_path,
+    get_current_buffer_name = get_current_buffer_name,
 }

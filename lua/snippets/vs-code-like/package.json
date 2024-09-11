@@ -1,0 +1,43 @@
+{
+    "name": "example-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "path": "./js/main.json",
+                "language": [
+                    "javascript",
+                    "vue",
+                    "html"
+                ]
+            },
+
+            {
+                "path": "./html/main.json",
+                "language": [
+                    "html",
+                    "vue"
+                ]
+            },
+
+            {
+                "path": "./css/main.json",
+                "language": [
+                    "css",
+                    "scss",
+                    "sass",
+                    "less",
+                    "stylus",
+                    "vue",
+                    "html"
+                ]
+            },
+
+            {
+                "path": "./sql/main.json",
+                "language": [
+                    "sql"
+                ]
+            }
+        ]
+	}
+}

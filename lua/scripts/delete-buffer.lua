@@ -13,9 +13,9 @@ local function CloseBuffer(buffer_index, opts)
     else
         vim.cmd("bdelete! " .. buffer_index)
     end
-    if count <= 1 then
-        vim.cmd("q")
-    end
+    -- if count <= 1 then
+    --     vim.cmd("q")
+    -- end
 end
 
 local function CloseBufferWithPrompt()

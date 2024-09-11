@@ -15,8 +15,8 @@
 					<div
 						class="menu"
 						:style="{
-                        margin: $q.screen.width > mobileWidth ? '' : '0'
-                    }"
+                            margin: $q.screen.width > mobileWidth ? '' : '0'
+                        }"
 					>
 						<template
 							v-if="$q.screen.width > mobileWidth"
@@ -85,6 +85,9 @@ export default {
     },
     methods: {
         handleClick() {
+            if (as) {
+                this.$error('');
+            }
             this.isActiveAos = true;
             console.log(123);
         },

@@ -1,3 +1,8 @@
+access_token=y0_AgAAAABv7avBAAxbgwAAAAEPWo0wAADe2fT66Z5AvaBZ0aoECd45De7XaQ
+token_type=bearer
+expires_in=31536000
+cid=c1abhmyhhpjbu2p9471bxtywnc
+
 https://github.com/nanotee/nvim-lua-guide
 type()
 vim.g: global variables

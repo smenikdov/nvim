@@ -64,6 +64,24 @@ return {
                 hidden = true,
                 desc = "Terminal Toggle",
             },
+            {
+                "<C-l>",
+                function()
+                    require("luasnip").jump(1)
+                end,
+                mode = { "i" },
+                hidden = true,
+                desc = "Luasnip Jump Next",
+            },
+            {
+                "<C-j>",
+                function()
+                    require("luasnip").jump(-1)
+                end,
+                mode = { "i" },
+                hidden = true,
+                desc = "Luasnip Jump Prev",
+            },
 
             { "<leader><leader>", ":Telescope find_files<CR>",            desc = "Find File",           hidden = true },
             { "<leader>/",        ":Telescope live_grep<CR>",             desc = "Find Text",           hidden = true },
@@ -75,6 +93,7 @@ return {
             { "<leader>fb",       ":Telescope buffers<CR>",               desc = "Find Buffer" },
             { "<leader>fh",       ":Telescope help_tags<CR>",             desc = "Find Help" },
             { "<leader>fc",       ":Telescope git_commits<CR>",           desc = "Find Commit" },
+            { "<leader>fp",       ":Telescope projects<CR>",              desc = "Find Projects" },
 
             { "<leader>g",        group = "Git" },
             { "<leader>gr",       ":LazyGit<CR>3++]<CR>",                 desc = "Open Remote Branches" },
@@ -92,9 +111,10 @@ return {
             { "<leader>cd",       vim.lsp.buf.definition,                 desc = "Code Definition" },
             { "<leader>cD",       vim.lsp.buf.declaration,                desc = "Code Declaration" },
             { "<leader>ca",       vim.lsp.buf.code_action,                desc = "Code Action" },
-            { "<leader>cr",       vim.lsp.buf.rename,                     desc = "Code Rename" },
+            -- { "<leader>cr",       vim.lsp.buf.rename,                     desc = "Code Rename" },
             { "<leader>cf",       vim.lsp.buf.format,                     desc = "Code Format" },
             { "<leader>ch",       vim.lsp.buf.hover,                      desc = "Code Hover" },
+            { "<leader>cr",       vim.lsp.buf.references,                 desc = "Code References" },
 
             { "<leader>m",        group = "Move" },
             { "<leader>md",       vim.lsp.buf.definition,                 desc = "Move To Definition" },

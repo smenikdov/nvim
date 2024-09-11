@@ -32,6 +32,7 @@ opt.wrap = false
 opt.number = true -- Show line number
 opt.relativenumber = true
 opt.encoding = "UTF-8"
+opt.scrolloff = 10
 -- opt.showmatch = true -- Highlight matching parenthesis
 -- opt.foldmethod = "marker" -- Enable folding (default 'foldmarker')
 -- opt.colorcolumn = "80" -- Line lenght marker at 80 columns
