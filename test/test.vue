@@ -65,7 +65,6 @@
 					</div>
 					<q-dialog class="all-rights-reserved">
 						© {{ new Date().getFullYear() }} ООО «ВДело». ОГРН 1206600030647. Все права защищены.
-                        привт
 					</q-dialog>
 				</div>
 			</div>

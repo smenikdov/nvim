@@ -233,12 +233,12 @@ return {
                 desc = "Spell Good Mark",
             },
             {
-                "<leader>sb",
+                "<leader>sw",
                 "zw",
-                desc = "Spell Bad Mark",
+                desc = "Spell Woops Mark",
             },
             {
-                "<leader>sj",
+                "<leader>sh",
                 "[s",
                 desc = "Spell Prev",
             },
