@@ -1,6 +1,7 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    tag = "stable",
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings
@@ -26,25 +27,25 @@ return {
             -- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
             { "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
 
-            { "<C-;>",
+            { "<C-a>",
                 function()
-                    require("scripts/language").toggle_language_n()
+                    require("scripts.language").toggle_language_n()
                 end,
                 mode = { "n" },
                 hidden = true,
                 desc = "Toggle language"
             },
-            { "<C-;>",
+            { "<C-a>",
                 function()
-                    require("scripts/language").toggle_language_i()
+                    require("scripts.language").toggle_language_i()
                 end,
                 mode = { "i" },
                 hidden = true,
                 desc = "Toggle language"
             },
-            { "<C-;>",
+            { "<C-a>",
                 function()
-                    require("scripts/language").toggle_language_c()
+                    return require("scripts.language").toggle_language_c()
                 end,
                 mode = { "c" },
                 hidden = true,
@@ -219,11 +220,32 @@ return {
                 desc = "Terminal Project Install Packages",
             },
 
+
             { "<leader>s", group = "Spell" },
             {
                 "<leader>ss",
                 ":set spell!<CR>",
                 desc = "Toggle Spell",
+            },
+            {
+                "<leader>sg",
+                "zg",
+                desc = "Spell Good Mark",
+            },
+            {
+                "<leader>sb",
+                "zw",
+                desc = "Spell Bad Mark",
+            },
+            {
+                "<leader>sj",
+                "[s",
+                desc = "Spell Prev",
+            },
+            {
+                "<leader>sl",
+                "]s",
+                desc = "Spell Next",
             },
         })
     end,

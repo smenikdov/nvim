@@ -47,6 +47,7 @@ local function setup()
     vim.api.nvim_command("highlight lCursor guifg=NONE guibg=Cyan")
     vim.opt.spell = false
     vim.opt.spelllang = "ru_yo,en_us"
+    -- vim.opt.spelllang = "en_us,ru_ru"
 end
 
 return {
