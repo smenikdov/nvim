@@ -19,6 +19,26 @@ return {
     },
     config = function(_, opts)
         local wk = require("which-key")
+        local lang = require("scripts.language")
+
+
+        -- <M is alt!!!!
+
+        -- Codeium
+        vim.keymap.set('i', '<C-a>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-x>', function () return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-]>', function () return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-[>', function () return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+        vim.keymap.set('i', '<M-a>', function () return vim.fn['codeium#Complete'] end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-l>', function () return require("luasnip").jump(1) end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-j>', function () return require("luasnip").jump(-1) end, { expr = true, silent = true })
+
+        -- Language
+        vim.keymap.set('i', '<C-z>', function () return lang.toggle_language_i() end, { expr = true, silent = true })
+        vim.keymap.set('n', '<C-z>', function () return lang.toggle_language_n() end, { expr = true, silent = true })
+        vim.keymap.set('c', '<C-z>', function () return lang.toggle_language_c() end, { expr = true, silent = true })
+        vim.keymap.set('v', '<C-z>', function ()  end, { expr = true, silent = true })
+
         wk.setup(opts.setup)
         wk.add({
             { "<Esc>", ":noh<CR>",    hidden = true },
@@ -26,31 +46,6 @@ return {
             { "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
             -- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
             { "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
-
-            { "<C-a>",
-                function()
-                    require("scripts.language").toggle_language_n()
-                end,
-                mode = { "n" },
-                hidden = true,
-                desc = "Toggle language"
-            },
-            { "<C-a>",
-                function()
-                    require("scripts.language").toggle_language_i()
-                end,
-                mode = { "i" },
-                hidden = true,
-                desc = "Toggle language"
-            },
-            { "<C-a>",
-                function()
-                    return require("scripts.language").toggle_language_c()
-                end,
-                mode = { "c" },
-                hidden = true,
-                desc = "Toggle language"
-            },
 
             {
                 "<C-\\>",
@@ -64,24 +59,6 @@ return {
                 ":ToggleTerm<CR>",
                 hidden = true,
                 desc = "Terminal Toggle",
-            },
-            {
-                "<C-l>",
-                function()
-                    require("luasnip").jump(1)
-                end,
-                mode = { "i" },
-                hidden = true,
-                desc = "Luasnip Jump Next",
-            },
-            {
-                "<C-j>",
-                function()
-                    require("luasnip").jump(-1)
-                end,
-                mode = { "i" },
-                hidden = true,
-                desc = "Luasnip Jump Prev",
             },
 
             { "<leader><leader>", ":Telescope find_files<CR>",            desc = "Find File",           hidden = true },
@@ -246,6 +223,19 @@ return {
                 "<leader>sl",
                 "]s",
                 desc = "Spell Next",
+            },
+
+
+            { "<leader>a", group = "AI" },
+            {
+                "<leader>aa",
+                ":call codeium#Clear()<CR>",
+                desc = "AI Clear",
+            },
+            {
+                "<leader>ac",
+                ":call codeium#Chat()<CR>",
+                desc = "AI Chat",
             },
         })
     end,

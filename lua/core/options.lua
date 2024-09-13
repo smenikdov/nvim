@@ -23,6 +23,11 @@ opt.swapfile = false -- Don't use swapfile
 opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.wrap = false
 
+
+-- CODEIUM
+g.codeium_enabled = true
+g.codeium_disable_bindings = 1
+
 -- opt.fileformat = "dos"
 -- opt.fileformats = "dos"
 
