@@ -24,12 +24,14 @@ return {
 
         -- <M is alt!!!!
 
-        -- Codeium
-        vim.keymap.set('i', '<C-a>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-        vim.keymap.set('i', '<C-x>', function () return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-        vim.keymap.set('i', '<C-]>', function () return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-        vim.keymap.set('i', '<C-[>', function () return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-        vim.keymap.set('i', '<M-a>', function () return vim.fn['codeium#Complete'] end, { expr = true, silent = true })
+        -- AI
+        -- vim.keymap.set('i', '<C-a>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+        -- vim.keymap.set('i', '<C-x>', function () return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+        -- vim.keymap.set('i', '<C-]>', function () return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+        -- vim.keymap.set('i', '<C-[>', function () return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+        -- vim.keymap.set('i', '<M-a>', function () return vim.fn['codeium#Complete'] end, { expr = true, silent = true })
+
+        -- Snippets
         vim.keymap.set('i', '<C-l>', function () return require("luasnip").jump(1) end, { expr = true, silent = true })
         vim.keymap.set('i', '<C-j>', function () return require("luasnip").jump(-1) end, { expr = true, silent = true })
 
@@ -128,47 +130,15 @@ return {
                 ":1ToggleTerm name='Master'<CR>",
                 desc = "Terminal Master",
             },
-            { "<leader>tf", group = "Terminal Frontend" },
             {
-                "<leader>tff",
+                "<leader>tf",
                 ":2ToggleTerm name='Frontend'<CR>",
                 desc = "Terminal Frontendl Open",
             },
             {
-                "<leader>tfr",
-                ":T RestartFrontend<CR>",
-                desc = "Terminal Frontend Restart",
-            },
-            {
-                "<leader>tfs",
-                ":T StartFrontend<CR>",
-                desc = "Terminal Frontend Start",
-            },
-            {
-                "<leader>tfS",
-                ":T StopFrontend<CR>",
-                desc = "Terminal Frontend Stop",
-            },
-            { "<leader>tb", group = "Terminal Backend" },
-            {
-                "<leader>tbb",
+                "<leader>tb",
                 ":3ToggleTerm name='Backend'<CR>",
                 desc = "Terminal Backend Open",
-            },
-            {
-                "<leader>tbr",
-                ":T RestartBackend<CR>",
-                desc = "Terminal Backend Restart",
-            },
-            {
-                "<leader>tbs",
-                ":T StartBackend<CR>",
-                desc = "Terminal Backend Start",
-            },
-            {
-                "<leader>tbS",
-                ":T StopBackend<CR>",
-                desc = "Terminal Backend Stop",
             },
             {
                 "<leader>t1",

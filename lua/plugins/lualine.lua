@@ -41,7 +41,7 @@ return {
                     {
                         function()
                             -- return require("scripts.env-manager.init").get_source_state_name("DATA_BASE") or ""
-                            return vim.api.nvim_call_function("codeium#GetStatusString", {})
+                            -- return vim.api.nvim_call_function("codeium#GetStatusString", {})
                         end
                     },
                     -- "filetype",
