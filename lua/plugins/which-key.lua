@@ -36,10 +36,10 @@ return {
         vim.keymap.set('i', '<C-j>', function () return require("luasnip").jump(-1) end, { expr = true, silent = true })
 
         -- Language
-        vim.keymap.set('i', '<C-z>', function () return lang.toggle_language_i() end, { expr = true, silent = true })
-        vim.keymap.set('n', '<C-z>', function () return lang.toggle_language_n() end, { expr = true, silent = true })
-        vim.keymap.set('c', '<C-z>', function () return lang.toggle_language_c() end, { expr = true, silent = true })
-        vim.keymap.set('v', '<C-z>', function ()  end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-;>', function () return lang.toggle_language_i() end, { expr = true, silent = true })
+        vim.keymap.set('n', '<C-;>', function () return lang.toggle_language_n() end, { expr = true, silent = true })
+        vim.keymap.set('c', '<C-;>', function () return lang.toggle_language_c() end, { expr = true, silent = true })
+        vim.keymap.set('v', '<C-;>', function ()  end, { expr = true, silent = true })
 
         wk.setup(opts.setup)
         wk.add({
@@ -199,14 +199,21 @@ return {
             { "<leader>a", group = "AI" },
             {
                 "<leader>aa",
-                ":call codeium#Clear()<CR>",
+                ":TabnineToggle<CR>",
                 desc = "AI Clear",
             },
             {
                 "<leader>ac",
-                ":call codeium#Chat()<CR>",
+                ":TabnineChat<CR>",
                 desc = "AI Chat",
             },
+            {
+                "<leader>as",
+                ":TabnineStatus<CR>",
+                desc = "AI Status",
+            },
+
+            { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
         })
     end,
 }

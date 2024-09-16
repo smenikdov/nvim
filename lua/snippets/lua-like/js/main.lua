@@ -193,7 +193,6 @@ local snippets = {
             { i(1, "name"), i(2), i(3, code_place) }
         ),
     },
-
     {
         name = "Declare Method",
         trig = "dm",
@@ -208,6 +207,26 @@ local snippets = {
         body = fmt(
             "async {}({}) {{\n\t{}\n}},",
             { i(1, "name"), i(2), i(3, code_place) }
+        ),
+    },
+    {
+        name = "Declare Method Async Request",
+        trig = "dmar",
+        body = fmt(
+            [[
+            async {}({}) {{
+                try {{
+                    const request = {{{}}};
+                    const response = await this.$api.{}(request);
+                    {}
+                }} catch (error) {{
+                    console.log('{}');
+                    console.error(error);
+                    this.$error('Ошибка при {}. Поробуйте позже или обратитесь в техподдержку.');
+                }}
+            }}
+            ]],
+            { i(1, "name"), i(2), i(3), i(4, "TODO"), i(5, code_place), i(6, "ERROR"), i(7) }
         ),
     },
 

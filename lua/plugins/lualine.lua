@@ -38,12 +38,13 @@ return {
                         cond = require("noice").api.status.command.has,
                         color = { fg = "#ff9e64" },
                     },
-                    {
-                        function()
-                            -- return require("scripts.env-manager.init").get_source_state_name("DATA_BASE") or ""
-                            -- return vim.api.nvim_call_function("codeium#GetStatusString", {})
-                        end
-                    },
+                    -- 'tabnine'
+                    -- {
+                    --     function()
+                    --         return require("scripts.env-manager.init").get_source_state_name("DATA_BASE") or ""
+                    --         return vim.api.nvim_call_function("codeium#GetStatusString", {})
+                    --     end
+                    -- },
                     -- "filetype",
                 },
                 lualine_y = { 

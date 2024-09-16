@@ -1,18 +1,37 @@
--- local function is_pascal_case(word)
---     return string.find(word, "^([A-Z][a-z]+)+$")
--- end
---
+local string_util = {}
 
-local function trim(s)
-    return string.gsub(s, "^%s*(.-)%s*$", "%1")
+function string_util.trim(str)
+  return str:gsub("%s+", "")
 end
 
-local function ends_with(str, ending)
-    return ending == "" or string.sub(str, -string.len(ending)) == ending
+function string_util.escape(str)
+  return str:gsub("[%(%)%.%%%+%-%*%?%[%^%$%]]", "%%%1")
 end
 
-return {
-    -- is_pascal_case = is_pascal_case,
-    trim = trim,
-    ends_with = ends_with,
-}
+function string_util.ends_with(str, suffix)
+  return str:sub(-#suffix) == suffix
+end
+
+function string_util.is_str_empty(target)
+  return target == nil or target == ""
+end
+
+function string_util.convert_empty_to_nil(target)
+  if target == "" then
+    return nil
+  else
+    return target
+  end
+end
+
+function string_util.split(str, delimiter)
+  local result = {}
+
+  for token in string.gmatch(str, "[^" .. delimiter .. "]+") do
+    table.insert(result, token)
+  end
+
+  return result
+end
+
+return string_util

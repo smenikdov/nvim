@@ -6,5 +6,8 @@ require("scripts/terminal")
 require("scripts/files/smart-find")
 local language = require("scripts/language")
 language.setup()
+
+local codesnap = require("scripts/codesnap/init")
+codesnap.setup()
 -- local env_manager = require("scripts/env-manager/init")
 -- env_manager.setup({})
