@@ -45,7 +45,7 @@ return {
                     --         return vim.api.nvim_call_function("codeium#GetStatusString", {})
                     --     end
                     -- },
-                    -- "filetype",
+                    "filetype",
                 },
                 lualine_y = { 
                      function()

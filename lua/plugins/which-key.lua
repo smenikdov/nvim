@@ -213,7 +213,7 @@ return {
                 desc = "AI Status",
             },
 
-            { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
+            -- { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
         })
     end,
 }
