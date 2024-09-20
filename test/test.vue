@@ -1,5 +1,5 @@
 <template>
-	<div style="margin-top: auto;" @click="handleClick">
+	<div style="margin-left: auto;" @click="handleClick">
 		<div class="footer app">
 			<div class="c-container">
 				<div class="logo-menu">
@@ -13,7 +13,7 @@
 					</div>
                     <ButtonDefault />
 					<div
-						class="menu"
+						class="menu justify-end"
 						:style="{
                             margin: $q.screen.width > mobileWidth ? '' : '0'
                         }"
@@ -89,7 +89,8 @@ export default {
                 this.$error('');
             }
             this.isActiveAos = true;
-            console.log(123);
+            console.log(126);
+            this.$error('Ошибка при том то. Попробуйте позже или обратитесь в техподдержку.');
         },
     },
 };
@@ -97,6 +98,6 @@ export default {
 
 <style scoped>
 .main {
-    background: red;
+    background: violet;
 }
 </style>
