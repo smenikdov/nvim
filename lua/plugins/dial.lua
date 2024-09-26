@@ -32,6 +32,12 @@ return {
             cyclic = true,
         })
 
+        a.dart_types = augend.constant.new({
+            elements = { "int", "float", "String", "bool" },
+            word = true,
+            cyclic = true,
+        })
+
         a.equal_not_eqaul = augend.constant.new({
             elements = { "===", "!==" },
             word = false,
@@ -205,6 +211,15 @@ return {
             a.axios_post_get,
         }
 
+        f.dart = {
+            -- GLOBAL
+            augend.integer.alias.decimal,
+            augend.constant.alias.bool,
+            a.logical_alias,
+            a.dart_types,
+            -- VDELO
+        }
+
         f.css = {
             augend.integer.alias.decimal,
             augend.constant.alias.bool,
@@ -250,6 +265,7 @@ return {
                 json = f.json,
                 lua = f.lua,
                 vue = f.vue,
+                dart = f.dart,
             },
         }
     end,

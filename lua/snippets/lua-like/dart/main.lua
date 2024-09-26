@@ -1,10 +1,13 @@
-
 local ls = require("luasnip")
 local su = require("snippets.lua-like.utils")
+local _utils = require("snippets.lua-like.utils")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
 local fmt = require("luasnip.extras.fmt").fmt
+local rep = require("luasnip.extras").rep
+local buffers_utils = require("scripts.utils.buffers")
 
 local code_place = "// code";
 

@@ -11,15 +11,13 @@ return {
 		},
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
-		-- "rafamadriz/friendly-snippets",
 		-- "onsails/lspkind.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
 		-- local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
-
-        -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/snippets" } }) require("snippets.lua-like.init")
+    require("snippets.lua-like.init")
 
 		cmp.setup({
 			snippet = {
