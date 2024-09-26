@@ -38,6 +38,7 @@ return {
 				"vue",
 				"prisma",
 				"sql",
+				"dart",
 			},
 			incremental_selection = {
 				enable = true,

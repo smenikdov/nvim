@@ -181,16 +181,10 @@ return {
                 ":6ToggleTerm name='Terminal 3'<CR>",
                 desc = "Terminal 3",
             },
-            { "<leader>tp", group = "Terminal Project" },
             {
-                "<leader>tpp",
+                "<leader>tp",
                 ":T StartProject<CR>",
                 desc = "Terminal Project Start",
-            },
-            {
-                "<leader>tpi",
-                ":T InstallPackages <CR>",
-                desc = "Terminal Project Install Packages",
             },
 
 

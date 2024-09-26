@@ -9,7 +9,8 @@ return {
 			version = "v2.*",
 			build = "make install_jsregexp",
 		},
-        "saadparwaiz1/cmp_luasnip",
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lsp",
 		-- "rafamadriz/friendly-snippets",
 		-- "onsails/lspkind.nvim",
 	},
@@ -18,8 +19,7 @@ return {
 		-- local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
 
-        -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/snippets" } })
-        require("snippets.lua-like.init")
+        -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/snippets" } }) require("snippets.lua-like.init")
 
 		cmp.setup({
 			snippet = {
@@ -38,7 +38,7 @@ return {
 				}),
 			}),
 			sources = cmp.config.sources({
-				-- { name = "nvim_lsp" },
+				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
@@ -67,10 +67,10 @@ return {
         --     matching = { disallow_symbol_nonprefix_matching = false }
         -- });
 
-        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-        -- require('lspconfig')['tsserver'].setup {
-        --     capabilities = capabilities
-        -- }
+        require('lspconfig')['dartls'].setup {
+            capabilities = capabilities
+        }
     end,
 }
