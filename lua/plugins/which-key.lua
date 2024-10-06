@@ -218,21 +218,54 @@ return {
             },
 
 
-            { "<leader>a", group = "AI" },
+            -- { "<leader>a", group = "AI" },
+            -- {
+            --     "<leader>aa",
+            --     ":TabnineToggle<CR>",
+            --     desc = "AI Clear",
+            -- },
+            -- {
+            --     "<leader>ac",
+            --     ":TabnineChat<CR>",
+            --     desc = "AI Chat",
+            -- },
+            -- {
+            --     "<leader>as",
+            --     ":TabnineStatus<CR>",
+            --     desc = "AI Status",
+            -- },
+
+
+            { "<leader>a", group = "Arduino" },
             {
                 "<leader>aa",
-                ":TabnineToggle<CR>",
-                desc = "AI Clear",
+                ":call arduino#Attach()<CR>",
+                desc = "Arduino Attach",
             },
             {
-                "<leader>ac",
-                ":TabnineChat<CR>",
-                desc = "AI Chat",
+                "<leader>av",
+                ":call arduino#Verify()<CR>",
+                desc = "Arduino Verify",
             },
             {
-                "<leader>as",
-                ":TabnineStatus<CR>",
-                desc = "AI Status",
+                "<leader>au",
+                ":call arduino#Upload()<CR>",
+                desc = "Arduino Upload",
+            },
+            {
+                "<leader>ad",
+                ":call arduino#UploadAndSerial()<CR>",
+                desc = "Arduino Upload And Serial",
+            },
+            {
+                "<leader>ap",
+                ":call arduino#ChooseProgrammer()<CR>",
+                desc = "Arduino Choose Programmer",
+            },
+            {
+                "<leader>ab",
+                ":call arduino#ChooseBoard()<CR>",
+                desc = "Arduino Choose Board",
             },
 
             -- { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
