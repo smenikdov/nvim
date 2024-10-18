@@ -17,7 +17,7 @@ local buffers_utils = require("scripts.utils.buffers")
 -- i import
 -- k keywords
 
-local code_place = "// code";
+local code_place = "// TODO";
 
 local function get_random_emoji()
     local emojis = {
