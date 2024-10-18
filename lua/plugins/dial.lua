@@ -33,7 +33,13 @@ return {
         })
 
         a.dart_types = augend.constant.new({
-            elements = { "int", "float", "String", "bool" },
+            elements = { "int", "double", "String", "bool" },
+            word = true,
+            cyclic = true,
+        })
+
+        a.column_row = augend.constant.new({
+            elements = { "Column", "Row" },
             word = true,
             cyclic = true,
         })
@@ -147,6 +153,42 @@ return {
             cyclic = true,
         })
 
+        a.axis = augend.constant.new({
+            elements = {
+                "mainAxisAlignment",
+                "crossAxisAlignment",
+            },
+            word = true,
+            cyclic = true,
+        })
+
+        a.axis_captial = augend.constant.new({
+            elements = {
+                "MainAxisAlignment",
+                "CrossAxisAlignment",
+            },
+            word = true,
+            cyclic = true,
+        })
+
+        a.super_this = augend.constant.new({
+            elements = {
+                "super",
+                "this",
+            },
+            word = true,
+            cyclic = true,
+        })
+
+        a.const_final = augend.constant.new({
+            elements = {
+                "const",
+                "final",
+            },
+            word = true,
+            cyclic = true,
+        })
+
         a.justify_class = augend.constant.new({
             elements = {
                 "justify-start",
@@ -217,6 +259,12 @@ return {
             augend.constant.alias.bool,
             a.logical_alias,
             a.dart_types,
+            a.column_row,
+            a.directions,
+            a.axis,
+            a.axis_captial,
+            a.super_this,
+            a.const_final,
             -- VDELO
         }
 
@@ -255,7 +303,6 @@ return {
             a.items_class,
             a.model_value,
         }
-
         return {
             groups = {
                 default = f.default,
@@ -281,6 +328,7 @@ return {
             "css",
             "scss",
             "vue",
+            "dart",
         }
 
         vim.api.nvim_create_augroup("Dial", { clear = true })
