@@ -27,7 +27,7 @@ local function CloseBufferWithPrompt()
     end
 
     if vim.api.nvim_buf_get_option(buffer_index, "modified") then
-        local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel")
+        local choice = vim.fn.confirm("Lol! Save changes?", "&Save\n&Discard\n&Cancel")
 
         if choice == 1 then
             CloseBuffer(buffer_index, { save = true })
