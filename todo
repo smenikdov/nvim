@@ -1,7 +1,6 @@
 TODOS
 ? Vue 2 
 ! Prettier
-! Git signs
 ? Cmp
 No Name buffers fix
 ! Spell check
@@ -14,7 +13,6 @@ SCRIPTS
 !1 smart search
 2 env db manager
 !3 vue tools
-4 snippet manager
 5 api search
 6 npm version to lualine
 7 macros manager
@@ -24,7 +22,6 @@ SCRIPTS
 11 db to lualine
 12 add import
 13 buffer manager
-14 lualine yandex tracker
 
 QUESTIONS
 1 How update branch without checkout

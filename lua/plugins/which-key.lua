@@ -106,7 +106,7 @@ return {
             { "<leader>g",        group = "Git" },
             { "<leader>gr",       ":LazyGit<CR>3++]",                        desc = "Git Remote Branches" },
             { "<leader>gc",       ":LazyGit<CR>4+",                          desc = "Git Commits" },
-            { "<leader>gg",       ":LazyGit<CR>2",                           desc = "Git Menu" },
+            { "<leader>gg",       ":LazyGit<CR>",                            desc = "Git Menu" },
             { "<leader>gs",       ":Telescope git_status<CR>",               desc = "Git Status" },
             { "<leader>gh",       ":Gitsigns blame_line<CR>",                desc = "Git Hover" },
             { "<leader>gb",       ":Gitsigns blame<CR>",                     desc = "Git Blame" },
@@ -221,6 +221,7 @@ return {
                 desc = "Spell Next",
             },
 
+            { "<leader>o", ":Oil<CR>", desc = "Oil" },
 
             -- { "<leader>a", group = "AI" },
             -- {
@@ -240,37 +241,37 @@ return {
             -- },
 
 
-            { "<leader>a", group = "Arduino" },
-            {
-                "<leader>aa",
-                ":call arduino#Attach()<CR>",
-                desc = "Arduino Attach",
-            },
-            {
-                "<leader>av",
-                ":call arduino#Verify()<CR>",
-                desc = "Arduino Verify",
-            },
-            {
-                "<leader>au",
-                ":call arduino#Upload()<CR>",
-                desc = "Arduino Upload",
-            },
-            {
-                "<leader>ad",
-                ":call arduino#UploadAndSerial()<CR>",
-                desc = "Arduino Upload And Serial",
-            },
-            {
-                "<leader>ap",
-                ":call arduino#ChooseProgrammer()<CR>",
-                desc = "Arduino Choose Programmer",
-            },
-            {
-                "<leader>ab",
-                ":call arduino#ChooseBoard()<CR>",
-                desc = "Arduino Choose Board",
-            },
+            -- { "<leader>a", group = "Arduino" },
+            -- {
+            --     "<leader>aa",
+            --     ":call arduino#Attach()<CR>",
+            --     desc = "Arduino Attach",
+            -- },
+            -- {
+            --     "<leader>av",
+            --     ":call arduino#Verify()<CR>",
+            --     desc = "Arduino Verify",
+            -- },
+            -- {
+            --     "<leader>au",
+            --     ":call arduino#Upload()<CR>",
+            --     desc = "Arduino Upload",
+            -- },
+            -- {
+            --     "<leader>ad",
+            --     ":call arduino#UploadAndSerial()<CR>",
+            --     desc = "Arduino Upload And Serial",
+            -- },
+            -- {
+            --     "<leader>ap",
+            --     ":call arduino#ChooseProgrammer()<CR>",
+            --     desc = "Arduino Choose Programmer",
+            -- },
+            -- {
+            --     "<leader>ab",
+            --     ":call arduino#ChooseBoard()<CR>",
+            --     desc = "Arduino Choose Board",
+            -- },
 
             -- { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
         })
