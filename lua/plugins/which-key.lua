@@ -20,6 +20,7 @@ return {
     config = function(_, opts)
         local wk = require("which-key")
         local lang = require("scripts.language")
+        local oil = require("oil")
 
 
         -- <M is alt!!!!
@@ -221,7 +222,12 @@ return {
                 desc = "Spell Next",
             },
 
-            { "<leader>o", ":Oil<CR>", desc = "Oil" },
+            {
+              "<leader>o",
+              function ()
+                return oil.open_float() end,
+              desc = "Oil"
+            },
 
             -- { "<leader>a", group = "AI" },
             -- {

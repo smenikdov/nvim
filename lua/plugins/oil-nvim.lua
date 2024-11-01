@@ -32,7 +32,7 @@ return {
     skip_confirm_for_simple_edits = false,
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
     -- (:help prompt_save_on_select_new_entry)
-    prompt_save_on_select_new_entry = true,
+    prompt_save_on_select_new_entry = false,
     -- Oil will automatically delete hidden buffers after this delay
     -- You can set the delay to false to disable cleanup entirely
     -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
@@ -66,7 +66,7 @@ return {
       ["<C-p>"] = "actions.preview",
       ["<C-c>"] = "actions.close",
       ["<C-l>"] = "actions.refresh",
-      ["<Esc>"] = "actions.parent",
+      ["-"] = "actions.parent",
       ["_"] = "actions.open_cwd",
       ["`"] = "actions.cd",
       ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
@@ -183,5 +183,6 @@ return {
       border = "rounded",
     },
   },
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
 }
