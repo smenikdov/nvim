@@ -11,6 +11,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
+                "eslint",
                 "lua_ls",
                 "cssls",
                 "html",
@@ -26,6 +27,7 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.cssls.setup({})
             lspconfig.html.setup({})
+            lspconfig.eslint.setup({})
             lspconfig.volar.setup({
                 filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
                 init_options = {
