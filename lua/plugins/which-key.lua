@@ -190,7 +190,7 @@ return {
             },
             {
                 "<leader>tp",
-                ":T StartProject<CR>",
+                ":T StartChechnyProject<CR>",
                 desc = "Terminal Project Start",
             },
 

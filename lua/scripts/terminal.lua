@@ -7,61 +7,49 @@
 -- local term2 = Terminal:new({ id = 5 })
 -- local term3 = Terminal:new({ id = 6 })
 
-
-local function StartFrontend()
-    vim.cmd('2TermExec cmd="nvm use vdelo; npm run dev" name="Frontend" open=0')
-    print("Frontend started")
-end
-
-local function StopFrontend()
-    vim.cmd('2TermExec cmd="" name="Frontend"')
-    local keys = vim.api.nvim_replace_termcodes('i<C-c><Esc><C-q>', true, false, true)
-    vim.api.nvim_feedkeys(keys, 'm', false)
-    print("Frontend stopped")
-end
-
-local function RestartFrontend()
-    StopFrontend()
-    StartFrontend()
-    print("Frontend restarted")
-end
-
 local function InstallPackages()
     vim.cmd('1TermExec cmd="nvm use vdelo; npm i" name="Installing"')
 end
 
-local function StartBackend()
+local function StartVdeloFrontend()
+    vim.cmd('2TermExec cmd="nvm use vdelo; npm run dev" name="Frontend" open=0')
+    print("Frontend started")
+end
+
+local function StartVdeloBackend()
     vim.cmd('3TermExec cmd="nvm use vdelo; npm run start" name="Backend" open=0')
     print("Backend started")
 end
 
-local function StopBackend()
-    vim.cmd('3TermExec cmd="" name="Backend"')
-    local keys = vim.api.nvim_replace_termcodes('i<C-c><Esc><C-q>', true, false, true)
-    vim.api.nvim_feedkeys(keys, 'm', false)
-    print("Backend stopped")
+local function StartVdeloProject()
+    StartVdeloBackend()
+    StartVdeloFrontend()
 end
 
-local function StartProject()
-    StartBackend()
-    StartFrontend()
+local function StartChechnyFrontend()
+    vim.cmd('2TermExec cmd="nvm use 20; npm run dev" name="Frontend" open=0 dir=~/projects/chechny/lk')
+    print("Frontend started")
 end
 
-local function RestartBackend()
-    StopBackend()
-    StartBackend()
-    print("Backend restarted")
+local function StartChechnyBackend()
+    vim.cmd('3TermExec cmd="nvm use 20; npm run start" name="Backend" open=0 dir=~/projects/chechny/back')
+    print("Backend started")
+end
+
+local function StartVdeloProject()
+    StartVdeloBackend()
+    StartVdeloFrontend()
+end
+
+local function StartChechnyProject()
+    StartChechnyBackend()
+    StartChechnyFrontend()
 end
 
 local commands = {
-    StartFrontend = StartFrontend,
-    StopFrontend = StopFrontend,
-    RestartFrontend = RestartFrontend,
-    StartBackend = StartBackend,
+    StartVdeloProject = StartVdeloProject,
+    StartChechnyProject = StartChechnyProject,
     InstallPackages = InstallPackages,
-    StopBackend = StopBackend,
-    RestartBackend = RestartBackend,
-    StartProject = StartProject,
 }
 
 vim.api.nvim_create_user_command("T", function(opts)
