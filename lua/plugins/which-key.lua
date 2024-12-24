@@ -105,8 +105,8 @@ return {
 			{ "<leader>e", ":Neotree toggle<CR>", desc = "Toggle tree", hidden = true },
 
 			{ "<leader>f", group = "Find" },
-			{ "<leader>ff", "yiw:Telescope find_files<CR><C-r>0", desc = "Find File" },
-			{ "<leader>ft", "yiw:Telescope live_grep<CR><C-r>0", desc = "Find Text" },
+			{ "<leader>ff", "yiw:Telescope find_files<CR><C-r>0<Esc>", desc = "Find File" },
+			{ "<leader>ft", "yiw:Telescope live_grep<CR><C-r>0<Esc>", desc = "Find Text" },
 			-- { "<leader>ff",       ":SmartFind<CR>",                       desc = "Find" },
 			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
@@ -211,8 +211,13 @@ return {
 			},
 			{
 				"<leader>tp",
-				":T StartChechnyProject<CR>",
+				":T StartVdeloProject<CR>",
 				desc = "Terminal Project Start",
+			},
+			{
+				"<leader>tc",
+				":T StartChechnyProject<CR>",
+				desc = "Terminal Chechny Start",
 			},
 
 			{ "<leader>s", group = "Spell" },
