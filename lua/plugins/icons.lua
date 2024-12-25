@@ -10,6 +10,9 @@ return {
     directory = {
       lib = { glyph = '', hl = 'MiniIconsBlue' },
       build = { glyph = '', hl = 'MiniIconsBlue' },
+      node_modules = { glyph = '', hl = 'MiniIconsBlue' },
+      src = { glyph = '', hl = 'MiniIconsBlue' },
+      tests = { glyph = '', hl = 'MiniIconsBlue' },
     },
   },
   lazy = true,

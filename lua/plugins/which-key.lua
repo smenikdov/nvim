@@ -81,7 +81,7 @@ return {
 		wk.add({
 			{ "<Esc>", ":noh<CR>", hidden = true },
 			{ "<C-s>", "<Esc>:w<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Save" },
-			{ "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
+			-- { "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
 			-- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
 			{ "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
 
@@ -185,16 +185,6 @@ return {
 				desc = "Terminal Master",
 			},
 			{
-				"<leader>tf",
-				":2ToggleTerm name='Frontend'<CR>",
-				desc = "Terminal Frontendl Open",
-			},
-			{
-				"<leader>tb",
-				":3ToggleTerm name='Backend'<CR>",
-				desc = "Terminal Backend Open",
-			},
-			{
 				"<leader>t1",
 				":4ToggleTerm name='Terminal 1'<CR>",
 				desc = "Terminal 1",
@@ -208,16 +198,6 @@ return {
 				"<leader>t3",
 				":6ToggleTerm name='Terminal 3'<CR>",
 				desc = "Terminal 3",
-			},
-			{
-				"<leader>tp",
-				":T StartVdeloProject<CR>",
-				desc = "Terminal Project Start",
-			},
-			{
-				"<leader>tc",
-				":T StartChechnyProject<CR>",
-				desc = "Terminal Chechny Start",
 			},
 
 			{ "<leader>s", group = "Spell" },
