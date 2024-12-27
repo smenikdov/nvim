@@ -111,7 +111,7 @@ return {
 			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
 			{ "<leader>fc", ":Telescope git_commits<CR>", desc = "Find Commit" },
-			{ "<leader>fp", ":Telescope projects<CR>", desc = "Find Projects" },
+			-- { "<leader>fp", ":Telescope projects<CR>", desc = "Find Projects" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gr", ":LazyGit<CR>3++]", desc = "Git Remote Branches" },
@@ -133,7 +133,15 @@ return {
 			{ "<leader>cd", vim.lsp.buf.definition, desc = "Code Definition" },
 			{ "<leader>cD", vim.lsp.buf.declaration, desc = "Code Declaration" },
 			{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action" },
-			-- { "<leader>cr",       vim.lsp.buf.rename,                     desc = "Code Rename" },
+			{
+                "<leader>cE",
+                function()
+                    vim.diagnostic.open_float(0, { sope="line" })
+                end,
+                desc = "Code Expand Error"
+            },
+			{ "<leader>ce", vim.diagnostic.setqflist, desc = "Code Errors" },
+			{ "<leader>cR",  vim.lsp.buf.rename, desc = "Code Rename" },
 			-- { "<leader>cf",       vim.lsp.buf.format,                     desc = "Code Format" },
 			{
 				"<leader>cf",
@@ -149,6 +157,37 @@ return {
 			},
 			{ "<leader>ch", vim.lsp.buf.hover, desc = "Code Hover" },
 			{ "<leader>cr", vim.lsp.buf.references, desc = "Code References" },
+			{ "<leader>ci", vim.lsp.buf.implementation, desc = "Code Implementation" },
+            {
+                "<leader>cx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Code Diagnostics",
+            },
+            {
+                "<leader>cX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Code Buffer Diagnostics",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Code Symbols",
+            },
+            {
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "Code LSP",
+            },
+            {
+                "<leader>cL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Code Location",
+            },
+            {
+                "<leader>cQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Code Quickfix",
+            },
 
 			{ "<leader>m", group = "Move" },
 			{ "<leader>md", vim.lsp.buf.definition, desc = "Move To Definition" },
