@@ -41,15 +41,15 @@ return {
                 --   },
                 --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
             })
-            lspconfig.volar.setup({
-                -- UNHYBRID_MODE:
-                filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
-                init_options = {
-                    vue = {
-                      hybridMode = false,
-                    },
-                },
-            })
+            -- lspconfig.volar.setup({
+            --     -- UNHYBRID_MODE:
+            --     filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+            --     init_options = {
+            --         vue = {
+            --           hybridMode = false,
+            --         },
+            --     },
+            -- })
         end,
     },
 }
