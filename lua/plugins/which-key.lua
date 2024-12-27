@@ -141,7 +141,8 @@ return {
                 desc = "Code Expand Error"
             },
 			{ "<leader>ce", vim.diagnostic.setqflist, desc = "Code Errors" },
-			{ "<leader>cR",  vim.lsp.buf.rename, desc = "Code Rename" },
+			{ "<leader>cR",  ":LspRestart<CR>", desc = "Code Restart LSP" },
+			{ "<leader>cn",  vim.lsp.buf.rename, desc = "Code Rename" },
 			-- { "<leader>cf",       vim.lsp.buf.format,                     desc = "Code Format" },
 			{
 				"<leader>cf",
