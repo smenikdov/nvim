@@ -66,16 +66,16 @@ return {
 		end, { expr = true, silent = true })
 
 		-- Language
-		vim.keymap.set("i", "<C-Space>", function()
+		vim.keymap.set("i", "<C-l>", function()
 			return lang.toggle_language_i()
 		end, { expr = true, silent = true })
-		vim.keymap.set("n", "<C-Space>", function()
+		vim.keymap.set("n", "<C-l>", function()
 			return lang.toggle_language_n()
 		end, { expr = true, silent = true })
-		vim.keymap.set("c", "<C-Space>", function()
+		vim.keymap.set("c", "<C-l>", function()
 			return lang.toggle_language_c()
 		end, { expr = true, silent = true })
-		vim.keymap.set("v", "<C-Space>", function() end, { expr = true, silent = true })
+		vim.keymap.set("v", "<C-l>", function() end, { expr = true, silent = true })
 
 		wk.setup(opts.setup)
 		wk.add({
