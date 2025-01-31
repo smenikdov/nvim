@@ -303,6 +303,41 @@ return {
 				desc = "Harpoon Menu",
 			},
 			{
+				"<leader>h1",
+				function()
+                    harpoon:list():select(1)
+				end,
+				desc = "Harpoon Select 1",
+			},
+			{
+				"<leader>h2",
+				function()
+                    harpoon:list():select(2)
+				end,
+				desc = "Harpoon Select 2",
+			},
+			{
+				"<leader>h3",
+				function()
+                    harpoon:list():select(3)
+				end,
+				desc = "Harpoon Select 3",
+			},
+            {
+				"<leader>h4",
+				function()
+                    harpoon:list():select(4)
+				end,
+				desc = "Harpoon Select 4",
+			},
+            {
+				"<leader>h5",
+				function()
+                    harpoon:list():select(5)
+				end,
+				desc = "Harpoon Select 5",
+			},
+			{
 				"<leader>ha",
 				function()
                     harpoon:list():add()
