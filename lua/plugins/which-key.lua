@@ -21,6 +21,23 @@ return {
 		local wk = require("which-key")
 		local lang = require("scripts.language")
 		local oil = require("oil")
+        local harpoon = require("harpoon")
+        local conf = require("telescope.config").values
+        local function toggle_telescope(harpoon_files)
+            local file_paths = {}
+            for _, item in ipairs(harpoon_files.items) do
+                table.insert(file_paths, item.value)
+            end
+
+            require("telescope.pickers").new({}, {
+                prompt_title = "Harpoon",
+                finder = require("telescope.finders").new_table({
+                    results = file_paths,
+                }),
+                previewer = conf.file_previewer({}),
+                sorter = conf.generic_sorter({}),
+            }):find()
+        end
 
 		-- <M is alt!!!!
 
@@ -273,6 +290,38 @@ return {
 					return oil.open_float()
 				end,
 				desc = "Oil",
+			},
+
+			{ "<leader>h", group = "Harpoon" },
+			{
+				"<leader>hh",
+				function()
+                    toggle_telescope(harpoon:list())
+                    local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+                    vim.api.nvim_feedkeys(keys, 'm', false)
+				end,
+				desc = "Harpoon Menu",
+			},
+			{
+				"<leader>ha",
+				function()
+                    harpoon:list():add()
+				end,
+				desc = "Harpoon Add",
+			},
+			{
+				"<leader>hd",
+				function()
+                    harpoon:list():remove()
+				end,
+				desc = "Harpoon Delete",
+			},
+			{
+				"<leader>hc",
+				function()
+                    harpoon:list():clear()
+				end,
+				desc = "Harpoon Clear",
 			},
 
 			-- { "<leader>a", group = "AI" },
