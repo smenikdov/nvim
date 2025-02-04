@@ -31,6 +31,7 @@ return {
                 lualine_c = { {
                     "filename",
                     path = 1,
+                    symbols = { unnamed = '' }
                 } },
                 lualine_x = {
                     {

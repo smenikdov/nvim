@@ -19,6 +19,12 @@ return {
                         separator = true,
                     },
                 },
+                name_formatter = function(buf)
+                    if buf.name == "[No Name]" then
+                        return ""
+                    end
+                    return buf.name
+                end
             },
         })
 
