@@ -23,6 +23,8 @@ return {
 		local oil = require("oil")
         local harpoon = require("harpoon")
         local conf = require("telescope.config").values
+        local digraphs = require("better-digraphs")
+
         local function toggle_telescope(harpoon_files)
             local file_paths = {}
             for _, item in ipairs(harpoon_files.items) do
@@ -47,6 +49,11 @@ return {
 		-- vim.keymap.set('i', '<C-]>', function () return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
 		-- vim.keymap.set('i', '<C-[>', function () return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
 		-- vim.keymap.set('i', '<M-a>', function () return vim.fn['codeium#Complete'] end, { expr = true, silent = true })
+
+		-- Digraphs
+		vim.keymap.set("i", "<C-k><C-k>", function()
+			return digraphs.digraphs("insert");
+		end)
 
 		-- Increment and decrement
 		vim.keymap.set("n", "<C-a>", function()
