@@ -124,13 +124,13 @@ return {
 			},
 
 			{ "<leader><leader>", ":Telescope find_files<CR>", desc = "Find File", hidden = true },
-			{ "<leader>/", ":Telescope live_grep<CR>", desc = "Find Text", hidden = true },
+			{ "<leader>/", ":Telescope live_grep_args<CR>", desc = "Find Text", hidden = true },
 			{ "<leader>q", ":CloseBuffer<CR>", desc = "Close Buffer", hidden = true },
 			{ "<leader>e", ":Neotree toggle<CR>", desc = "Toggle tree", hidden = true },
 
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:Telescope find_files<CR><C-r>0<Esc>", desc = "Find File" },
-			{ "<leader>ft", "yiw:Telescope live_grep<CR><C-r>0<Esc>", desc = "Find Text" },
+			{ "<leader>ft", "yiw:Telescope live_grep_args<CR><C-r>0<Esc>", desc = "Find Text" },
 			-- { "<leader>ff",       ":SmartFind<CR>",                       desc = "Find" },
 			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
@@ -304,8 +304,8 @@ return {
 				"<leader>hh",
 				function()
                     toggle_telescope(harpoon:list())
-                    local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-                    vim.api.nvim_feedkeys(keys, 'm', false)
+                    -- local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+                    -- vim.api.nvim_feedkeys(keys, 'm', false)
 				end,
 				desc = "Harpoon Menu",
 			},
