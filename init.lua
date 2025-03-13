@@ -3,6 +3,7 @@ require("core/lazy")
 
 require("scripts/delete-buffer")
 require("scripts/files/smart-find")
+require("scripts/find-route")
 local language = require("scripts/language")
 language.setup()
 
