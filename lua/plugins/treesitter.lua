@@ -39,7 +39,7 @@ return {
 				"prisma",
 				"sql",
 				"dart",
-        "arduino",
+                "arduino",
 			},
 			incremental_selection = {
 				enable = true,

@@ -125,7 +125,7 @@ return {
         })
 
         a.notify = augend.constant.new({
-            elements = { "$error", "$warn", "$success" },
+            elements = { "$error", "$warning", "$success" },
             word = false,
             cyclic = true,
         })

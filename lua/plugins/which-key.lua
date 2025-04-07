@@ -17,6 +17,7 @@ return {
 			desc = "Buffer Local Keymaps (which-key)",
 		},
 	},
+
 	config = function(_, opts)
 		local wk = require("which-key")
 		local lang = require("scripts.language")
@@ -100,6 +101,8 @@ return {
 			return lang.toggle_language_c()
 		end, { expr = true, silent = true })
 		vim.keymap.set("v", "<C-l>", function() end, { expr = true, silent = true })
+
+        vim.keymap.set('v', '<Leader>cf', vim.lsp.buf.format)
 
 		wk.setup(opts.setup)
 		wk.add({
@@ -369,6 +372,24 @@ return {
 				end,
 				desc = "Harpoon Clear",
 			},
+
+			{ "<leader>n", group = "Notifications" },
+			{
+				"<leader>nc",
+                ":Noice dismiss<CR>",
+				desc = "Notifications Clear",
+			},
+			-- {
+			-- 	"<leader>nl",
+			--              ":Noice last<CR>",
+			-- 	desc = "Notifications Last",
+			-- },
+			{
+				"<leader>nn",
+                ":Noice telescope<CR>",
+				desc = "Notifications Menu",
+			},
+
 
 			-- { "<leader>a", group = "AI" },
 			-- {
