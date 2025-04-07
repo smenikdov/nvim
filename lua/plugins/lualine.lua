@@ -42,12 +42,12 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     -- 'tabnine'
-                    -- {
-                    --     function()
-                    --         return require("scripts.env-manager.init").get_source_state_name("DATA_BASE") or ""
-                    --         return vim.api.nvim_call_function("codeium#GetStatusString", {})
-                    --     end
-                    -- },
+                    {
+                        function()
+                            return require("scripts.env-manager.init").active_state_name() or ""
+                            -- return vim.api.nvim_call_function("codeium#GetStatusString", {})
+                        end
+                    },
                     "filetype",
                 },
                 lualine_y = { 

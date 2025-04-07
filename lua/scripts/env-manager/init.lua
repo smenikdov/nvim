@@ -1,13 +1,4 @@
-local buffers_utils = require("scripts.utils.buffers")
-local string_utils = require("scripts.utils.string")
-local table_utils = require("scripts.utils.table")
-local files_utils = require("scripts.utils.files")
-
--- ! ALL NAMES SHOULD BE UNIC
---
-
-local prefix = ""
-
+-- Глобальные переменные для хранения профилей и активного состояния
 local function get_env_path()
     local env_path = vim.fn.findfile(".env", "**")
     return env_path
@@ -23,229 +14,130 @@ local function get_env_file()
     return env
 end
 
-local function set_source_active_state_name(source_name, source_state_name)
-    local temp_env_manager_sources = vim.g.env_manager_sources
-    local source = table_utils.find(temp_env_manager_sources, function(source)
-        return source.name == source_name
-    end)
-    if not source then
-        print("Source with such name not found")
+-- Функция для парсинга .env файла
+local function parse_env_file()
+    local profiles = {}
+    local active_db_name = nil
+
+    local file = get_env_file()
+    if not file then
+        print("Не удалось открыть .env файл")
         return
     end
-    source.active_state_name = source_state_name
-    vim.g.env_manager_sources = temp_env_manager_sources
-end
 
-
-local function env_set_fields(fields, is_need_print)
-    local env = get_env_file()
-    if not env then
-        print("Can't read env file")
-        return
-    end
-    for line_index = #env, 1, -1 do
-        local line = env[line_index]
-        for field_index, field in ipairs(fields) do
-            if string.find(line, "^%s*" .. field.name .. "%s*=") then
-                table.remove(env, line_index)
+    -- Парсим профили
+    for i, line in ipairs(file) do
+        if line:match("^#%s*@%s*DB_PROFILE") then
+            local profile = {}
+            -- Собираем следующие 6 строк
+            for j = 1, 6 do
+                local next_line = file[i + j]
+                if next_line then
+                    -- Удаляем комментарий (#) и пробелы
+                    local clean_line = next_line:gsub("^#%s*", "")
+                    local key, value = clean_line:match("([^=]+)=(.+)")
+                    if key and value then
+                        profile[key] = value
+                    end
+                end
             end
+            -- Сохраняем профиль по уникальному DB_NAME
+            if profile.DB_NAME then
+                profiles[profile.DB_NAME] = profile
+            end
+        elseif line:match("^DB_NAME=") then
+            -- Ищем активный DB_NAME (без # в начале)
+            active_db_name = line:match("^DB_NAME=(.+)")
+            -- print(active_db_name)
         end
     end
-    for field_index, field in ipairs(fields) do
-        table.insert(env, 1, field.name .. "=" .. field.value)
+
+    vim.g.env_manager_sources = profiles
+    vim.g.env_manager_active = active_db_name
+end
+
+-- Функция для получения активного имени
+local function active_state_name()
+    return vim.g.env_manager_active
+end
+
+-- Функция для переключения профиля
+local function set_source_state(profile_name)
+    local profiles = vim.g.env_manager_sources
+    if not profiles[profile_name] then
+        print("Профиль " .. profile_name .. " не найден")
+        return
+    end
+
+    local env = get_env_file()
+    if not env then
+        print("Не удалось открыть .env файл для записи")
+        return
+    end
+
+    -- Обновляем активные строки
+    local new_lines = {}
+    for _, line in ipairs(env) do
+        local new_line = line
+
+        if line:match("^DB_HOST=") then
+            new_line = "DB_HOST=" .. profiles[profile_name].DB_HOST
+        elseif line:match("^DB_PORT=") then
+            new_line = "DB_PORT=" .. profiles[profile_name].DB_PORT
+        elseif line:match("^DB_DATABASE=") then
+            new_line = "DB_DATABASE=" .. profiles[profile_name].DB_DATABASE
+        elseif line:match("^DB_USER=") then
+            new_line = "DB_USER=" .. profiles[profile_name].DB_USER
+        elseif line:match("^DB_PASSWORD=") then
+            new_line = "DB_PASSWORD=" .. profiles[profile_name].DB_PASSWORD
+        elseif line:match("^DB_NAME=") then
+            new_line = "DB_NAME=" .. profiles[profile_name].DB_NAME
+        end
+        table.insert(new_lines, new_line)
     end
 
     local env_path = get_env_path()
     if not env_path then
+        print("Не удалось записать в .env файл")
         return
     end
-    vim.fn.writefile(env, env_path)
-    if is_need_print then
-        print("State successful updated")
-    end
+    vim.fn.writefile(new_lines, env_path)
+    vim.g.env_manager_active = profiles[profile_name].DB_NAME
 end
 
-local function set_source_state(source_name, source_state_name)
-    if not vim.g.env_manager_sources then
-        print("You didnt setup any sources")
-        return nil
-    end
-    local source = table_utils.find(vim.g.env_manager_sources, function(source)
-        return source.name == source_name
-    end)
-    if not source then
-        print("Source with such name not found")
-        return
-    end
-    if not source.states then
-        print("Source states is empty")
-        return
-    end
-    local state = table_utils.find(source.states, function(state)
-        return state.name == source_state_name
-    end)
-    if not state then
-        print("State with such name not found")
-        return
-    else
-        if not state.fields then
-            print("You have state without fields")
-            return
+-- Функция автодополнения для команды
+local function complete_env_profiles(arg_lead, cmd_line, cursor_pos)
+    local profiles = vim.g.env_manager_sources
+    local matches = {}
+    for profile_name, _ in pairs(profiles) do
+        if profile_name:find(arg_lead, 1, true) == 1 then
+            table.insert(matches, profile_name)
         end
-        set_source_active_state_name(source.name, source_state_name)
-        local fields_to_apply = {
-            {
-                name = prefix .. source_name,
-                value = source_state_name,
-            },
-        }
-        for field_index, field in ipairs(state.fields) do
-            table.insert(fields_to_apply, field)
-        end
-        env_set_fields(fields_to_apply, true)
     end
+    return matches
 end
 
-local function get_source_state_name(source_name)
-    if not vim.g.env_manager_sources then
-        return nil
-    end
-    local source = table_utils.find(vim.g.env_manager_sources, function(source)
-        return source.name == source_name
-    end)
-    if not source then
-        return nil
-    end
-    return source.active_state_name
-end
+local function setup()
+    vim.g.env_manager_sources = {}
+    vim.g.env_manager_active = nil
 
-local function get_env_value(key, env)
-    if not env then
-        env = get_env_file()
-        if not env then
-            return nil
-        end
-    end
-    for i, line in pairs(env) do
-        local match = string.find(line, "^%s*" .. key .. "%s*=.+$")
-        if match then
-            local pos = string.find(line, "=")
-            if pos then
-                return string.sub(line, pos + 1)
-            else
-                return nil
-            end
-        end
-    end
-    return nil
-end
+    parse_env_file()
 
-local function setup(opts)
-    vim.g.env_manager_sources = vim.g.env_manager_sources or {}
-    local env_manger_path     = opts.env_manger_path or "scripts/env-manager/env-ignore"
-    prefix                    = opts.prefix or "ENV_MANAGER_"
-    local projects            = require(env_manger_path)
-    local env                 = get_env_file()
-    if not env then
-        print("Can't read env file")
-        return
-    end
-
-    local project_name = get_env_value(prefix .. "PROJECT_NAME")
-    if not project_name then
-        print("You need add in .env " .. prefix .. "PROJECT_NAME")
-        return
-    end
-
-    local project_data = table_utils.find(projects, function(project)
-        return project.name == project_name
-    end)
-
-    if not project_data then
-        print("Can't find project with such name. Check env variable " .. prefix .. "PROJECT_NAME")
-        return
-    end
-
-    if not project_data.sources then
-        print("You need add some project sources")
-        return
-    end
-
-    vim.g.env_manager_sources = project_data.sources
-
-    local fields_to_apply = {}
-    for source_index, source in ipairs(vim.g.env_manager_sources) do
-        local source_state_name = get_env_value(prefix .. source.name)
-        if not source_state_name then
-            set_source_active_state_name(source.name, "unset")
-            -- TOOD ?
-        else
-            local state = table_utils.find(source.states, function(state)
-                return state.name == source_state_name
-            end)
-            if not state then
-                set_source_active_state_name(source.name, "incorrect")
-                print("You have unknown " .. prefix .. source.name .. " value")
-            else
-                set_source_active_state_name(source.name, source_state_name)
-                if not state.fields then
-                    print("You have state without fields")
-                else
-                    for field_index, field in ipairs(state.fields) do
-                        table.insert(fields_to_apply, field)
-                    end
-                end
-            end
-        end
-    end
-
-    print(vim.g.env_manager_sources[1].name)
-    print(vim.g.env_manager_sources[1].active_state_name)
-
-    env_set_fields(fields_to_apply)
-
-    vim.api.nvim_create_user_command("EnvManagerSetSourceState", function(opts)
-        local fargs = opts.fargs
-        set_source_state(fargs[1], fargs[2])
-    end, {
-        nargs = "*",
-        complete = function(arg_lead, cmd_line, cursor_pos)
-            local args = vim.split(cmd_line, "%s")
-            if #args == 2 then
-                return table_utils.map(vim.g.env_manager_sources, function(source)
-                    return source.name
-                end)
-            end
-            if #args == 3 then
-                local source = table_utils.find(vim.g.env_manager_sources, function(source)
-                    return source.name == args[2]
-                end)
-                if source and source.states then
-                    return table_utils.map(source.states, function(state)
-                        return state.name
-                    end)
-                else
-                    return {}
-                end
-            end
+    vim.api.nvim_create_user_command(
+        "EnvManagerSetSourceState",
+        function(opts)
+            set_source_state(opts.args)
         end,
-    })
+        {
+            nargs = 1,
+            complete = complete_env_profiles,
+        }
+    )
 
-    -- vim.api.nvim_create_user_command("EnvManagerGetActiveName", function(opts)
-    --     local fargs = opts.fargs
-    --     get_source_state_name(fargs[1])
-    -- end, {
-    --     nargs = 1,
-    --     complete = function()
-    --         local suggersions = table_utils.map(sources, function(source)
-    --             return source.name
-    --         end)
-    --         return suggersions
-    --     end,
-    -- })
+    -- Экспорт функции active_state_name для использования в других скриптах
 end
 
 return {
     setup = setup,
-    get_source_state_name = get_source_state_name,
+    active_state_name = active_state_name,
 }

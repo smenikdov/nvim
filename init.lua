@@ -11,5 +11,5 @@ language.setup()
 -- local codesnap = require("scripts/codesnap/init")
 -- codesnap.setup()
 
--- local env_manager = require("scripts/env-manager/init")
--- env_manager.setup({})
+local env_manager = require("scripts/env-manager/init")
+env_manager.setup()
