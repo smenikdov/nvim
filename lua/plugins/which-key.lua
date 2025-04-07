@@ -271,32 +271,49 @@ return {
 				desc = "Terminal 3",
 			},
 
-			{ "<leader>s", group = "Spell" },
+			{ "<leader>s", group = "Spectre" },
 			{
 				"<leader>ss",
-				":set spell!<CR>",
-				desc = "Toggle Spell",
-			},
-			{
-				"<leader>sg",
-				"zg",
-				desc = "Spell Good Mark",
+                ":lua require('spectre').toggle()<CR>",
+				desc = "Spectre Toggle",
 			},
 			{
 				"<leader>sw",
-				"zw",
-				desc = "Spell Woops Mark",
+                ":lua require('spectre').open_visual({select_word=true})<CR>",
+				desc = "Spectre Word",
 			},
 			{
-				"<leader>sh",
-				"[s",
-				desc = "Spell Prev",
+				"<leader>sf",
+                ":lua require('spectre').open_file_search({select_word=true})<CR>",
+				desc = "Spectre File",
 			},
-			{
-				"<leader>sl",
-				"]s",
-				desc = "Spell Next",
-			},
+
+			-- { "<leader>s", group = "Spell" },
+			-- {
+			-- 	"<leader>ss",
+			-- 	":set spell!<CR>",
+			-- 	desc = "Toggle Spell",
+			-- },
+			-- {
+			-- 	"<leader>sg",
+			-- 	"zg",
+			-- 	desc = "Spell Good Mark",
+			-- },
+			-- {
+			-- 	"<leader>sw",
+			-- 	"zw",
+			-- 	desc = "Spell Woops Mark",
+			-- },
+			-- {
+			-- 	"<leader>sh",
+			-- 	"[s",
+			-- 	desc = "Spell Prev",
+			-- },
+			-- {
+			-- 	"<leader>sl",
+			-- 	"]s",
+			-- 	desc = "Spell Next",
+			-- },
 
 			{
 				"<leader>o",

@@ -45,7 +45,7 @@ local function setup()
     vim.opt.iminsert = 0
     vim.opt.imsearch = 0
     vim.api.nvim_command("highlight lCursor guifg=NONE guibg=Cyan")
-    vim.opt.spell = false
+    vim.opt.spell = true
     vim.opt.spelllang = "ru_yo,en_us"
     -- vim.opt.spelllang = "en_us,ru_ru"
 end

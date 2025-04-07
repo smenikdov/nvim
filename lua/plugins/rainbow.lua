@@ -15,6 +15,6 @@ return {
       show_start = true,
       show_end = false,
     },
-    exclude = { filetypes = { 'dashboard' }}
+    exclude = { filetypes = { 'dashboard', 'spectre_panel' }}
   }
 }
