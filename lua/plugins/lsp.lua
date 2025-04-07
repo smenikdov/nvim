@@ -15,6 +15,7 @@ return {
                 "lua_ls",
                 "cssls",
                 "html",
+                "jsonls",
                 "ts_ls",
                 "volar",
             },
@@ -27,6 +28,7 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.cssls.setup({})
             lspconfig.html.setup({})
+            lspconfig.jsonls.setup({})
             -- lspconfig.eslint.setup({})
             lspconfig.ts_ls.setup({
                 -- HYBRID_MODE:

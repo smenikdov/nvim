@@ -40,6 +40,8 @@ return {
 				"sql",
 				"dart",
                 "arduino",
+                "http",
+                "graphql",
 			},
 			incremental_selection = {
 				enable = true,

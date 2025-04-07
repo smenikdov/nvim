@@ -66,6 +66,12 @@ opt.history = 100 -- Remember N lines in history
 opt.synmaxcol = 240 -- Max column for syntax highlight
 opt.updatetime = 250 -- ms to wait for trigger an event
 
+vim.filetype.add({
+    extension = {
+        ['http'] = 'http',
+    },
+})
+
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
