@@ -131,7 +131,7 @@ return {
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:Telescope find_files<CR><C-r>0<Esc>", desc = "Find File" },
 			{ "<leader>ft", "yiw:Telescope live_grep_args<CR><C-r>0<Esc>", desc = "Find Text" },
-			{ "<leader>fm", "yiw:Telescope live_grep_args<CR>(function\\s+<C-r>0\\s*\\()|(const\\s+<C-r>0\\s*=\\s*\\()<Esc>", desc = "Find Method" },
+			{ "<leader>fm", "yiw:FindCurrentMethod<CR><C-r>0<Esc>", desc = "Find Current Method" },
 			-- { "<leader>fr", ":Telescope live_grep_args<CR>\"url.+\" --iglob **/point.js<ESC>0", desc = "Find Route" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
 			-- { "<leader>ff",       ":SmartFind<CR>",                       desc = "Find" },
@@ -149,6 +149,7 @@ return {
 			{ "<leader>gb", ":Gitsigns blame<CR>", desc = "Git Blame" },
 			{ "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
 			{ "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
+			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			-- { "<leader>gb",       ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
 
 			{ "<leader>b", group = "Buffer" },

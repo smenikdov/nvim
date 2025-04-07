@@ -7,7 +7,7 @@ local make_entry = require "telescope.make_entry"
 
 local function find_routes()
     pickers.new({}, {
-        prompt_title = "Find Routes (enter url pattern)",
+        prompt_title = "Find Routes",
         finder = finders.new_dynamic({
             fn = function(prompt)
                 prompt = prompt:gsub("api", "")
@@ -28,6 +28,7 @@ local function find_routes()
                     'rg --type js --glob "**/point.js" "url:.+%s" -n --column',
                     clear_prompt
                 )
+                print(search_cmd1)
 
                 local results = {}
                 local results1 = vim.fn.systemlist(search_cmd1)
@@ -41,10 +42,11 @@ local function find_routes()
                     local url_part = prompt:gsub(folder_part, "")
                     local clear_url_part  = url_part:gsub('%d+', ':.+')
                     local search_cmd2 = string.format(
-                        'rg --type js --glob "**/%spoint.js" "url:\\s.+[\'\\"]/%s" -n --column',
+                        'rg --type js --glob "**/%spoint.js" "url:\\s+[\'\\"]/%s" -n --column',
                         folder_part,
                         clear_url_part
                     )
+                    print(search_cmd2)
 
                     local results2 = vim.fn.systemlist(search_cmd2)
 
@@ -96,6 +98,3 @@ vim.api.nvim_create_user_command(
     find_routes,
     { nargs = 0 }
 )
-
--- Keymap
-vim.keymap.set("n", "<leader>fr", find_routes, { desc = "Find Route" })
