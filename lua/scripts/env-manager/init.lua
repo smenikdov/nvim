@@ -6,8 +6,8 @@ end
 
 local function get_env_file()
     local env_path = get_env_path()
-    if not env_path then
-        return
+    if (not env_path) or (#env_path == 0) then
+        return nil
     end
 
     local env = vim.fn.readfile(env_path)
@@ -21,7 +21,6 @@ local function parse_env_file()
 
     local file = get_env_file()
     if not file then
-        print("Не удалось открыть .env файл")
         return
     end
 

@@ -226,9 +226,19 @@ return {
                 hide_by_pattern = { -- uses glob style patterns
                     --"*.meta",
                     --"*/src/*/tsconfig.json",
+                    "*.fla",
+                    "*.png",
+                    "*.md",
+                    "*.docx",
+                    -- "*/tests",
+                    "*/demon",
+                    "*/dump",
+                    "*/i18n",
+                    -- "*/sort-migrate.js",
                 },
                 always_show = { -- remains visible even if other settings would normally hide it
                     --".gitignored",
+                    "env"
                 },
                 always_show_by_pattern = { -- uses glob style patterns
                     ".env*",
