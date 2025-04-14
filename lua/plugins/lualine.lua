@@ -11,6 +11,9 @@ return {
                 disabled_filetypes = {
                     statusline = {
                         'dashboard',
+                        'Avante',
+                        'AvanteSelectedFiles',
+                        'AvanteSelectedFiles',
                     },
                     winbar = {
                         'dashboard',

@@ -33,6 +33,7 @@ return {
             lua = { glyph = '', hl = 'MiniIconsBlue' },
             spell = { glyph = '', hl = 'MiniIconsBlue' },
             test = { glyph = '', hl = 'MiniIconsBlue' },
+            queries = { glyph = '', hl = 'MiniIconsBlue' },
         },
     },
     lazy = true,

@@ -382,3 +382,8 @@ TableOldDefault
 ButtonCopyText
 src
 addSpacesToNumber
+RowTextWithLabel
+DialogDefault
+InputDefault
+QuestionTooltip
+InputFilePicker

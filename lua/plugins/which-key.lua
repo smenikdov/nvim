@@ -155,8 +155,9 @@ return {
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			-- { "<leader>gb",       ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
 
-			{ "<leader>b", group = "Buffer" },
-			{ "<leader>bd", ":CloseBuffer<CR>", desc = "Close Buffer" },
+			-- { "<leader>b", group = "Buffer" },
+			-- { "<leader>bd", ":CloseBuffer<CR>", desc = "Close Buffer" },
+
 			{ "L", ":BufferLineCycleNext<CR>", hidden = true },
 			{ "H", ":BufferLineCyclePrev<CR>", hidden = true },
 
@@ -221,10 +222,10 @@ return {
                 desc = "Code Quickfix",
             },
 
-			{ "<leader>m", group = "Move" },
-			{ "<leader>md", vim.lsp.buf.definition, desc = "Move To Definition" },
-			{ "<leader>mD", vim.lsp.buf.declaration, desc = "Move To Declaration" },
-			{ "<leader>mr", vim.lsp.buf.references, desc = "Move To References" },
+			-- { "<leader>m", group = "Move" },
+			-- { "<leader>md", vim.lsp.buf.definition, desc = "Move To Definition" },
+			-- { "<leader>mD", vim.lsp.buf.declaration, desc = "Move To Declaration" },
+			-- { "<leader>mr", vim.lsp.buf.references, desc = "Move To References" },
 
 			{ "gd", vim.lsp.buf.definition, desc = "Definition" },
 			{ "gD", vim.lsp.buf.declaration, desc = "Declaration" },
@@ -408,12 +409,60 @@ return {
 			},
 
 
-			-- { "<leader>a", group = "AI" },
+			{ "<leader>a", group = "AI" },
+			{
+			    "<leader>aa",
+			    ":AvanteChat<CR>",
+			    desc = "AI Ask",
+			},
+			{
+			    "<leader>an",
+			    ":AvanteChat<CR>",
+			    desc = "AI New",
+			},
+			{
+			    "<leader>ah",
+			    ":AvanteHistory<CR>",
+			    desc = "AI History",
+			},
+			{
+			    "<leader>am",
+			    ":AvanteModels<CR>",
+			    desc = "AI Models",
+			},
+			{
+			    "<leader>al",
+			    ":AvanteClear<CR>",
+			    desc = "AI Clear",
+			},
+			{
+			    "<leader>ar",
+			    ":AvanteRefresh<CR>",
+			    desc = "AI Refresh",
+			},
+			{
+			    "<leader>ax",
+			    ":AvanteStop<CR>",
+			    desc = "AI Stop",
+			},
 			-- {
-			--     "<leader>aa",
-			--     ":TabnineToggle<CR>",
-			--     desc = "AI Clear",
+			--     "<leader>ac",
+			--     desc = "AI Add file",
 			-- },
+			{
+			    "<leader>ae",
+			    ":AvanteEdit<CR>",
+			    desc = "AI Edit",
+                mode = "v",
+			},
+			{
+			    "<leader>aa",
+			    "<CMD>AvanteAsk<CR><Esc>",
+			    desc = "AI Ask",
+                mode = "v",
+			},
+
+
 			-- {
 			--     "<leader>ac",
 			--     ":TabnineChat<CR>",
@@ -424,6 +473,8 @@ return {
 			--     ":TabnineStatus<CR>",
 			--     desc = "AI Status",
 			-- },
+
+
 
 			-- { "<leader>a", group = "Arduino" },
 			-- {
