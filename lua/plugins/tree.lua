@@ -239,6 +239,7 @@ return {
                     --".gitignored",
                     "env",
                     "spell",
+                    "test",
                 },
                 always_show_by_pattern = { -- uses glob style patterns
                     ".env*",

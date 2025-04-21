@@ -69,6 +69,7 @@ opt.updatetime = 250 -- ms to wait for trigger an event
 vim.filetype.add({
     extension = {
         ['http'] = 'http',
+        hbs = "html"
     },
 })
 
