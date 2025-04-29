@@ -102,7 +102,7 @@ return {
 		end, { expr = true, silent = true })
 		vim.keymap.set("v", "<C-l>", function() end, { expr = true, silent = true })
 
-        vim.keymap.set('v', '<Leader>cf', vim.lsp.buf.format)
+        -- vim.keymap.set('v', '<Leader>cf', vim.lsp.buf.format)
 
 		wk.setup(opts.setup)
 		wk.add({

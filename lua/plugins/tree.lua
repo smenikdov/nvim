@@ -237,7 +237,7 @@ return {
                 },
                 always_show = { -- remains visible even if other settings would normally hide it
                     --".gitignored",
-                    "env",
+                    "sandbox",
                     "spell",
                     "test",
                 },

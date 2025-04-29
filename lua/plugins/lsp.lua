@@ -17,7 +17,8 @@ return {
                 "html",
                 "jsonls",
                 "ts_ls",
-                "volar",
+                -- "volar",
+                "sqls",
             },
         },
     },
@@ -43,6 +44,35 @@ return {
                 --   },
                 --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
             })
+
+            lspconfig.sqls.setup({
+                on_attach = function(client, bufnr)
+                    require('sqls').on_attach(client, bufnr)
+                end,
+                settings = {
+                    sqls = {
+                        connections = {
+                            {
+                                driver = 'postgresql',
+                                dataSourceName = 'host=127.0.0.1 port=5432 user=postgres password=FCp9N4faxDQvjL59 dbname=vdelo sslmode=disable',
+                            },
+                            {
+                                driver = 'postgresql',
+                                dataSourceName = 'host=81.177.140.128 port=5432 user=ruslan password=FCp9N4faxDQvjL59 dbname=vdelo sslmode=disable',
+                            },
+                            {
+                                driver = 'postgresql',
+                                dataSourceName = 'host=127.0.0.1 port=5432 user=postgres password=FCp9N4faxDQvjL59 dbname=vdelo-ben sslmode=disable',
+                            },
+                            -- {
+                            --     driver = 'postgresql',
+                            --     dataSourceName = 'host=81.177.141.43 port=5432 user=investra password=RQ8RB7Xxt1DyS dbname=investra sslmode=disable',
+                            -- },
+                        },
+                    },
+                },
+            })
+
             -- lspconfig.volar.setup({
             --     -- UNHYBRID_MODE:
             --     filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
