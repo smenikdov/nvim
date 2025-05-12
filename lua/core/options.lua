@@ -29,9 +29,6 @@ opt.wrap = false
 g.codeium_enabled = true
 g.codeium_disable_bindings = 1
 
--- opt.fileformat = "dos"
--- opt.fileformats = "dos"
-
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------

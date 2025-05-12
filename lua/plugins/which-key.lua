@@ -22,25 +22,8 @@ return {
 		local wk = require("which-key")
 		local lang = require("scripts.language")
 		local oil = require("oil")
-        local harpoon = require("harpoon")
-        local conf = require("telescope.config").values
         local digraphs = require("better-digraphs")
 
-        local function toggle_telescope(harpoon_files)
-            local file_paths = {}
-            for _, item in ipairs(harpoon_files.items) do
-                table.insert(file_paths, item.value)
-            end
-
-            require("telescope.pickers").new({}, {
-                prompt_title = "Harpoon",
-                finder = require("telescope.finders").new_table({
-                    results = file_paths,
-                }),
-                previewer = conf.file_previewer({}),
-                sorter = conf.generic_sorter({}),
-            }):find()
-        end
 
 		-- <M is alt!!!!
 
@@ -141,6 +124,7 @@ return {
 			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
 			{ "<leader>fc", ":Telescope git_commits<CR>", desc = "Find Commit" },
+			{ "<leader>f'", ":Telescope marks<CR>", desc = "Find Mark" },
 			-- { "<leader>fp", ":Telescope projects<CR>", desc = "Find Projects" },
 
 			{ "<leader>g", group = "Git" },
@@ -324,73 +308,6 @@ return {
 				desc = "Oil",
 			},
 
-			{ "<leader>h", group = "Harpoon" },
-			{
-				"<leader>hh",
-				function()
-                    toggle_telescope(harpoon:list())
-                    -- local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-                    -- vim.api.nvim_feedkeys(keys, 'm', false)
-				end,
-				desc = "Harpoon Menu",
-			},
-			{
-				"<leader>h1",
-				function()
-                    harpoon:list():select(1)
-				end,
-				desc = "Harpoon Select 1",
-			},
-			{
-				"<leader>h2",
-				function()
-                    harpoon:list():select(2)
-				end,
-				desc = "Harpoon Select 2",
-			},
-			{
-				"<leader>h3",
-				function()
-                    harpoon:list():select(3)
-				end,
-				desc = "Harpoon Select 3",
-			},
-            {
-				"<leader>h4",
-				function()
-                    harpoon:list():select(4)
-				end,
-				desc = "Harpoon Select 4",
-			},
-            {
-				"<leader>h5",
-				function()
-                    harpoon:list():select(5)
-				end,
-				desc = "Harpoon Select 5",
-			},
-			{
-				"<leader>ha",
-				function()
-                    harpoon:list():add()
-				end,
-				desc = "Harpoon Add",
-			},
-			{
-				"<leader>hd",
-				function()
-                    harpoon:list():remove()
-				end,
-				desc = "Harpoon Delete",
-			},
-			{
-				"<leader>hc",
-				function()
-                    harpoon:list():clear()
-				end,
-				desc = "Harpoon Clear",
-			},
-
 			{ "<leader>n", group = "Notifications" },
 			{
 				"<leader>nc",
@@ -519,8 +436,6 @@ return {
 			--     ":call arduino#ChooseBoard()<CR>",
 			--     desc = "Arduino Choose Board",
 			-- },
-
-			-- { "<leader>;", "<Esc><CMD>CodeSnap<CR>", mode = "x", hidden = true },
 
 			{ "<leader>r", group = "Rest" },
             { "<leader>rb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad" },
