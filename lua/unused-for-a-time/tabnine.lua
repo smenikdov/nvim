@@ -1,5 +1,7 @@
 return {
     'codota/tabnine-nvim',
+    commit = 'dc7cdf59df675921220e70acfc003b27d1b8160f',
+
     build = "./dl_binaries.sh",
 	config = function()
         require('tabnine').setup({
