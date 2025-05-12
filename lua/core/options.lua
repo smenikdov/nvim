@@ -32,6 +32,7 @@ g.codeium_disable_bindings = 1
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
+opt.fillchars:append { vert = " " }
 opt.number = true -- Show line number
 opt.relativenumber = true
 opt.encoding = "UTF-8"

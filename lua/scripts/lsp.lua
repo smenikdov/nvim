@@ -21,7 +21,7 @@ lspconfig.cssls.setup({})
 lspconfig.html.setup({})
 lspconfig.jsonls.setup({})
 lspconfig.ts_ls.setup({})
-lspconfig.eslint.setup({})
+-- lspconfig.eslint.setup({})
 lspconfig.sqls.setup({
     on_attach = function(client, bufnr)
         require('sqls').on_attach(client, bufnr)

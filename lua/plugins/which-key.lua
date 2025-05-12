@@ -135,7 +135,7 @@ return {
 			{ "<leader>gs", ":Telescope git_status<CR>", desc = "Git Status" },
 			{ "<leader>gh", ":Gitsigns blame_line<CR>", desc = "Git Hover" },
 			{ "<leader>gb", ":Gitsigns blame<CR>", desc = "Git Blame" },
-			{ "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
+			-- { "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
 			{ "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			-- { "<leader>gb",       ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
