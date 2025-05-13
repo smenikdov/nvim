@@ -21,7 +21,6 @@ return {
 	config = function(_, opts)
 		local wk = require("which-key")
 		local lang = require("scripts.language")
-		local oil = require("oil")
         local digraphs = require("better-digraphs")
 
 
@@ -93,15 +92,15 @@ return {
 			{ "<C-s>", "<Esc>:w<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Save" },
 			-- { "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
 			-- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
-			{ "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
+			-- { "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
 
-			{
-				"<C-\\>",
-				"<C-\\><C-n>:ToggleTerm<CR>",
-				mode = "t",
-				hidden = true,
-				desc = "Terminal Close",
-			},
+			-- {
+			-- 	"<C-\\>",
+			-- 	"<C-\\><C-n>:ToggleTerm<CR>",
+			-- 	mode = "t",
+			-- 	hidden = true,
+			-- 	desc = "Terminal Close",
+			-- },
 			{
 				"<C-\\>",
 				":ToggleTerm<CR>",
@@ -304,7 +303,11 @@ return {
 			{
 				"<leader>o",
 				function()
-					return oil.open_float()
+                    require("oil").open_float(nil, {
+                        -- preview = {
+                        --     vertical = true,
+                        -- }
+                    })
 				end,
 				desc = "Oil",
 			},
