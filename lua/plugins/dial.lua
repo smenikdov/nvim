@@ -8,6 +8,18 @@ return {
         local augend = require("dial.augend")
         local a = {}
 
+        a.join = augend.constant.new({
+            elements = { "INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL JOIN" },
+            word = false,
+            cyclic = true,
+        })
+
+        a.bool_up = augend.constant.new({
+            elements = { "TRUE", "FALSE" },
+            word = true,
+            cyclic = true,
+        })
+
         a.and_or = augend.constant.new({
             elements = { "and", "or" },
             word = true,
@@ -268,6 +280,14 @@ return {
             -- VDELO
         }
 
+        f.sql = {
+            -- GLOBAL
+            augend.integer.alias.decimal,
+            a.join,
+            a.bool_up,
+            -- VDELO
+        }
+
         f.css = {
             augend.integer.alias.decimal,
             augend.constant.alias.bool,
@@ -313,6 +333,7 @@ return {
                 lua = f.lua,
                 vue = f.vue,
                 dart = f.dart,
+                sql = f.sql,
             },
         }
     end,
@@ -329,6 +350,7 @@ return {
             "scss",
             "vue",
             "dart",
+            "sql",
         }
 
         vim.api.nvim_create_augroup("Dial", { clear = true })

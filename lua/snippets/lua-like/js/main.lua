@@ -19,26 +19,8 @@ local buffers_utils = require("scripts.utils.buffers")
 
 local code_place = "// TODO";
 
-local function get_random_emoji()
-    local emojis = {
-        "▼", "■", "●", "✖", "★","✿", "◆", "❖",
-        "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒", "➓"
-    }
-    return emojis[math.random(#emojis)]
-end
-
 local snippets = {
     { "d", group = "Declare" },
-    {
-        name = "Declare Let",
-        trig = "dl",
-        body = fmt("let {}", { i(1, "name") }),
-    },
-    {
-        name = "Declare Let Awaited",
-        trig = "dlw",
-        body = fmt("let {} = await {}", { i(1, "name"), i(2, "value") }),
-    },
     {
         name = "Declare Let Object",
         trig = "dlo",
@@ -74,65 +56,19 @@ local snippets = {
         ),
     },
     {
-        name = "Declare Let Destructuring Object",
-        trig = "dldo",
-        body = fmt(
-            "let {{ {} }} = {}",
-            { i(1, "name"), i(2, "value") }
-        ),
-    },
-    {
-        name = "Declare Let Destructuring Array",
-        trig = "dlda",
-        body = fmt(
-            "let [ {} ] = {}",
-            { i(1, "name"), i(2, "value") }
-        ),
-    },
-    {
-        name = "Declare Let Destructuring Object Awaited",
-        trig = "dldaa",
-        body = fmt(
-            "let {{ {} }} = await {}",
-            { i(1, "name"), i(2, "value") }
-        ),
-    },
-    {
-        name = "Declare Let Destructuring Array Awaited",
-        trig = "dldaa",
-        body = fmt(
-            "let [ {} ] = await {}",
-            { i(1, "name"), i(2, "value") }
-        ),
-    },
-
-    {
-        name = "Declare Const",
-        trig = "dc",
-        body = fmt("const {}", { i(1, "name") }),
-    },
-    {
-        name = "Declare Const Awaited",
-        trig = "dcw",
-        body = fmt(
-            "const {} = await {}",
-            { i(1, "name"), i(2, "value") }
-        ),
-    },
-    {
         name = "Declare Const Object",
         trig = "dco",
         body = fmt(
-            "const {} = {{\n\t{}\n}}",
-            { i(1, "name"), i(2) }
+            "const {} = {{\n}};",
+            { i(1, "name") }
         ),
     },
     {
         name = "Declare Const Array",
         trig = "dca",
         body = fmt(
-            "const {} = [\n\t{}\n]",
-            { i(1, "name"), i(2) }
+            "const {} = [\n];",
+            { i(1, "name") }
         ),
     },
     {
@@ -160,53 +96,32 @@ local snippets = {
         ),
     },
     {
-        name = "Declare Const Destructuring Object",
-        trig = "dcdo",
-        body = fmt("const {{ {} }} = {}", { i(1, "name"), i(2, "value") }),
-    },
-    {
-        name = "Declare Const Destructuring Array",
-        trig = "dcda",
-        body = fmt("const [ {} ] = {}", { i(1, "name"), i(2, "value") }),
-    },
-    {
-        name = "Declare Const Destructuring Object Awaited",
-        trig = "dcdaa",
-        body = fmt("const {{ {} }} = await {}", { i(1, "name"), i(2, "value") }),
-    },
-    {
-        name = "Declare Const Destructuring Array Awaited",
-        trig = "dcdaa",
-        body = fmt("const [ {} ] = await {}", { i(1, "name"), i(2, "value") }),
-    },
-
-    {
         name = "Declare Function",
         trig = "df",
-        body = fmt("function {} ({}) {{\n\t{}\n}}", { i(1, "name"), i(2), i(3) }),
+        body = fmt("function {} ({}) {{\n}}", { i(1, "name"), i(2) }),
     },
     {
         name = "Declare Function Async",
         trig = "dfa",
         body = fmt(
-            "async function {} ({}) {{\n\t{}\n}}",
-            { i(1, "name"), i(2), i(3, code_place) }
+            "async function {} ({}) {{\n}}",
+            { i(1, "name"), i(2) }
         ),
     },
     {
         name = "Declare Method",
         trig = "dm",
         body = fmt(
-            "{}({}) {{\n\t{}\n}},",
-            { i(1, "name"), i(2), i(3, code_place) }
+            "{}({}) {{\n}},",
+            { i(1, "name"), i(2) }
         ),
     },
     {
         name = "Declare Method Async",
         trig = "dma",
         body = fmt(
-            "async {}({}) {{\n\t{}\n}},",
-            { i(1, "name"), i(2), i(3, code_place) }
+            "async {}({}) {{\n}},",
+            { i(1, "name"), i(2) }
         ),
     },
     {
@@ -216,45 +131,74 @@ local snippets = {
             [[
             async {}({}) {{
                 try {{
-                    const request = {{{}}};
+                    const request = {{
+                    }};
                     const response = await this.$api.{}(request);
-                    {}
-                }} catch (error) {{
-                    console.log('{}');
-                    console.error(error);
-                    this.$error('Ошибка при {}. Поробуйте позже или обратитесь в техподдержку.');
+                    const data = response.data;
                 }}
-            }}
+                catch (error) {{
+                    console.log('{}');
+                    console.log(error);
+                    this.$error('Ошибка при {}. Попробуйте позже или обратитесь в техподдержку.');
+                }}
+            }},
             ]],
-            { i(1, "name"), i(2), i(3), i(4, "TODO"), i(5, code_place), i(6, "ERROR"), i(7) }
+            { i(1, "name"), i(2), i(3, "TODO"), i(4, "ERROR"), i(5) }
         ),
     },
+    -- {
+    --     name = "Declare Handler",
+    --     trig = "dh",
+    --     body = fmt(
+    --         [[
+    --         ]],
+    --         { i(1, "name"), i(2), i(3), i(4, "TODO") }
+    --     ),
+    -- },
+    {
+        name = "Declare Point",
+        trig = "dp",
+        body = fmt(
+            [[
+            fastify.route({{
+                method: 'POST',
+                url: '/{}',
+                schema: {{
+                    body: {{
+                        type: 'object',
+                        properties: {{{}}},
+                        required: [{}],
+                    }},
+                    response: {{
+                        400: {{
+                            type: 'object',
+                            properties: {{
+                                message: {{ type: 'string' }},
+                                statusCode: {{ type: 'integer' }},
+                            }},
+                        }},
+                    }},
+                }},
+                async handler (request, reply) {{
+                    const data = await {}(request.body);
 
+                    if (data.statusCode !== 200) {{
+                        reply.code(400);
+                    }}
+                    
+                    reply.send(data);
+                }},
+            }});
+            ]],
+            { i(1, "name"), i(2), i(3), i(4, "TODO") }
+        ),
+    },
 
     { "l", group = "Log" },
     {
         name = "Log",
-        trig = "l",
-        body = fmt("console.log({});", { i(1) }),
-    },
-    {
-        name = "Log Debug",
         trig = "ll",
-        body = {
-            t("console.log(`%c"),
-            f(get_random_emoji, {}),
-            t(" "),
-            f(buffers_utils.get_current_buffer_name, {}),
-            t(":"),
-            -- f(buffers_utils.get_current_line_index, {}),
-            i(1),
-            t("`, 'color: white; background-color: #007acc; padding: 5px 10px; font-size: 12px;');"),
-        }
-    },
-    {
-        name = "Log Variable",
-        trig = "lv",
-        body = fmt("console.log('{}:', {});", { i(1), rep(1) }),
+        body = fmt("console.log({});", { i(1) }),
     },
     {
         name = "Log Error",
@@ -306,11 +250,6 @@ local snippets = {
 
     { "e", group = "Export" },
     {
-        name = "Export",
-        trig = "e",
-        body = fmt("export {}", { i(1) }),
-    },
-    {
         name = "Export Default",
         trig = "ed",
         body = fmt("export default {}", { i(1) }),
@@ -328,39 +267,30 @@ local snippets = {
             { i(1, "name"), i(2), i(3, code_place) }
         ),
     },
-    {
-        name = "Export Function Default",
-        trig = "efd",
-        body = fmt(
-            "export default function {} ({}) {{\n\t{}\n}}",
-            { i(1, "name"), i(2), i(3, code_place) }
-        ),
-    },
-
 
     { "c", group = "Create" },
     {
         name = "Create If",
         trig = "ci",
         body = fmt(
-            "if ({}) {{\n\t{}\n}}",
-            { i(1, "true"), i(2, code_place)
+            "if ({}) {{\n}}",
+            { i(1, "true")
         }),
     },
     {
         name = "Create If Else",
         trig = "cie",
         body = fmt(
-            "if ({}) {{\n\t{}\n}} else {{\n\t{}\n}}",
-            { i(1, "true"), i(2, code_place), i(3, code_place)
+            "if ({}) {{\n}}\nelse {{\n}}",
+            { i(1, "true")
         }),
     },
     {
         name = "Create If Else If",
         trig = "ciei",
         body = fmt(
-            "if ({}) {{\n\t{}\n}} else if ({}) {{\n\t{}\n}}",
-            { i(1, "true"), i(2, code_place), i(3, "true"), i(4, code_place)
+            "if ({}) {{\n}}\nelse if ({}) {{\n}}",
+            { i(1, "true"), i(2, "true")
         }),
     },
     {
@@ -375,32 +305,32 @@ local snippets = {
         name = "Create Else If",
         trig = "cei",
         body = fmt(
-            "else if ({}) {{\n\t{}\n}}",
-            { i(1, "true"), i(2, code_place)
+            "else if ({}) {{\n}}",
+            { i(1, "true")
         }),
     },
     {
         name = "Create Try Catch",
         trig = "ctc",
         body = fmt(
-            "try {{\n\t{}\n}} catch (error) {{\n\t{}\n}}",
-            { i(1, code_place), i(2, code_place) }
+            "try {{\n\t{}\n}}\ncatch (error) {{\n}}",
+            { i(1, code_place) }
         ),
     },
     {
         name = "Create Try Finally",
         trig = "ctf",
         body = fmt(
-            "try {{\n\t{}\n}} finally {{\n\t{}\n}}",
-            { i(1, code_place), i(2, code_place) }
+            "try {{\n\t{}\n}}\nfinally {{\n}}",
+            { i(1, code_place) }
         ),
     },
     {
         name = "Create Try Catch Finally",
         trig = "ctcf",
         body = fmt(
-            "try {{\n\t{}\n}} catch (error) {{\n\t{}\n}} finally {{\n\t{}\n}}",
-            { i(1, code_place), i(2, code_place), i(3, code_place) }
+            "try {{\n\t{}\n}}\ncatch (error) {{\n}}\nfinally {{\n}}",
+            { i(1, code_place) }
         ),
     },
     {
@@ -451,7 +381,7 @@ local snippets = {
     {
         name = "This Warn",
         trig = "tw",
-        body = fmt("this.$warn({});", { i(1) }),
+        body = fmt("this.$warning({});", { i(1) }),
     },
     {
         name = "This Success",
@@ -468,11 +398,11 @@ local snippets = {
         trig = "th",
         body = fmt("this.$helpers.{}({});", { i(1, "name"), i(2) }),
     },
-    {
-        name = "This Emit",
-        trig = "te",
-        body = fmt("this.$emit({});", { i(1) }),
-    },
+    -- {
+    --     name = "This Emit",
+    --     trig = "te",
+    --     body = fmt("this.$emit({});", { i(1) }),
+    -- },
     {
         name = "This Bus",
         trig = "tb",
@@ -513,22 +443,22 @@ local snippets = {
     {
         name = "This Store Getters",
         trig = "tsg",
-        body = fmt("this.$store.getters.{}();", { i(1) }),
+        body = fmt("this.$store.getters.{};", { i(1) }),
     },
     {
         name = "This Store Dispatch Object",
         trig = "tsdo",
-        body = fmt("this.$store.dispatch('{}', {{\n\t{}\n}});", { i(1), i(2) }),
+        body = fmt("this.$store.dispatch('{}', {{\n}});", { i(1) }),
     },
     {
         name = "This Store Dispatch Array",
         trig = "tsda",
-        body = fmt("this.$store.dispatch('{}', [\n\t{}\n]);", { i(1), i(2) }),
+        body = fmt("this.$store.dispatch('{}', [\n]);", { i(1) }),
     },
     {
         name = "This Message",
         trig = "tm",
-        body = fmt("this.$message({})\n\t.onOk(async () => {{\n\t{}\n}});", { i(1, "message"), i(2) }),
+        body = fmt("this.$message({})\n\t.onOk(async () => {{\n\t}});", { i(1, "message") }),
     },
     {
         name = "This NextTick",

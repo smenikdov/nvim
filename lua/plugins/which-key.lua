@@ -332,12 +332,12 @@ return {
 			{ "<leader>a", group = "AI" },
 			{
 			    "<leader>aa",
-			    "dd:r!sgpt 'Выполни задание по '.%:e.'. Напиши только код без примеров использования, комментариев и объяснения. Вот текст задания: <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			    "dd:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
 			    desc = "AI Ask",
 			},
 			{
 			    "<leader>ae",
-			    "dd:r!sgpt '<C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			    "dd:r!sgpt --md '<C-r>1' | sed 's/[[:space:]]*$//'<CR>",
 			    desc = "AI Ask empty",
 			},
 
