@@ -2,26 +2,10 @@ TODOS
 ? Vue 2 
 ! Prettier
 ? Cmp
-No Name buffers fix
 ! Spell check
 DB
-Check for oli.nvim
 SQL in JS
 Package json plugin
 
 SCRIPTS
-!1 smart search
-2 env db manager
-!3 vue tools
-5 api search
-6 npm version to lualine
-7 macros manager
-!8 quasar docs
-9 sms add command
-10 custom emmet
-11 db to lualine
 12 add import
-13 buffer manager
-
-QUESTIONS
-1 How update branch without checkout

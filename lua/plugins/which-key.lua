@@ -332,80 +332,45 @@ return {
 			{ "<leader>a", group = "AI" },
 			{
 			    "<leader>aa",
-			    "dd:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			    ":SgptAsk<CR>",
 			    desc = "AI Ask",
+                mode = "n",
 			},
 			{
-			    "<leader>ae",
-			    "dd:r!sgpt --md '<C-r>1' | sed 's/[[:space:]]*$//'<CR>",
-			    desc = "AI Ask empty",
+			    "<leader>aa",
+			    ":SgptAskSelection<CR>",
+			    desc = "AI Ask",
+                mode = "v",
+                hidden = true,
 			},
-
-
-			-- { "<leader>a", group = "AI" },
+			{
+			    "<leader>aq",
+			    "dd:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			    desc = "AI Ask Query",
+                mode = "n",
+			},
 			-- {
-			--     "<leader>aa",
-			--     ":AvanteChat<CR>",
-			--     desc = "AI Ask",
-			-- },
-			-- {
-			--     "<leader>an",
-			--     ":AvanteChat<CR>",
-			--     desc = "AI New",
-			-- },
-			-- {
-			--     "<leader>ah",
-			--     ":AvanteHistory<CR>",
-			--     desc = "AI History",
-			-- },
-			-- {
-			--     "<leader>am",
-			--     ":AvanteModels<CR>",
-			--     desc = "AI Models",
-			-- },
-			-- {
-			--     "<leader>al",
-			--     ":AvanteClear<CR>",
-			--     desc = "AI Clear",
-			-- },
-			-- {
-			--     "<leader>ar",
-			--     ":AvanteRefresh<CR>",
-			--     desc = "AI Refresh",
-			-- },
-			-- {
-			--     "<leader>ax",
-			--     ":AvanteStop<CR>",
-			--     desc = "AI Stop",
-			-- },
-			-- {
-			--     "<leader>ac",
-			--     desc = "AI Add file",
+			--     "<leader>aq",
+			--     "d:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			--     desc = "AI Ask Query",
+            --     mode = "v",
+            --     hidden = true,
 			-- },
 			-- {
 			--     "<leader>ae",
-			--     ":AvanteEdit<CR>",
-			--     desc = "AI Edit",
-			--              mode = "v",
+			--     "dd:r!sgpt --md '<C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			--     desc = "AI Ask empty",
+			--              mode = "n",
 			-- },
 			-- {
-			--     "<leader>aa",
-			--     "<CMD>AvanteAsk<CR><Esc>",
-			--     desc = "AI Ask",
+			--     "<leader>ae",
+			--     "d:r!sgpt --md '<C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			--     desc = "AI Ask empty",
 			--              mode = "v",
+			--              hidden = true,
 			-- },
 
 
-			-- {
-			--     "<leader>ac",
-			--     ":TabnineChat<CR>",
-			--     desc = "AI Chat",
-			-- },
-			-- {
-			--     "<leader>as",
-			--     ":TabnineStatus<CR>",
-			--     desc = "AI Status",
-			-- },
 
 
 
