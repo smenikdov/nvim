@@ -51,8 +51,8 @@ function M.ask_sgpt_selection()
         { prompt = "Sgpt" },
         function(text)
             if text then
-                local query = text .. "\n\nКод:\n" .. selected_text
-                local cmd = string.format('sgpt --no-md "%s"', vim.fn.shellescape(query))
+                local query = text .. "\n" .. selected_text
+                local cmd = string.format('sgpt --no-md "%s"', vim.fn.shellescape(query:gsub('"', '\\"')))
                 M.run_sgpt(cmd, 'markdown')
             end
         end
