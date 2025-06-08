@@ -125,7 +125,7 @@ return {
 			{ "<leader>fc", ":Telescope git_commits<CR>", desc = "Find Commit" },
 			{ "<leader>f'", ":Telescope marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":Telescope current_buffer_fuzzy_find<CR>", desc = "Find In Buffer" },
-			{ "<leader>fs", ":Telescope find_files cwd=/home/smenikdov/.config/nvim/templates<CR>", desc = "Find Snippet" },
+			{ "<leader>fs", ":Telescope find_files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
 			-- { "<leader>fp", ":Telescope projects<CR>", desc = "Find Projects" },
 
 			{ "<leader>g", group = "Git" },
