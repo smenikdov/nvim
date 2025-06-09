@@ -15,6 +15,9 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.autoformat = false
 g.omni_sql_no_default_maps = 1
+g.codeium_filetypes = {
+    typr = false
+}
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
