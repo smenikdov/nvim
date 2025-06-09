@@ -6,12 +6,15 @@
         required
     >
         <template v-slot:right>
-            <InputDateDefault
-                v-model="date"
-                block-future-dates
-                fill-mask
-                required
-                :rules="$rules.r_date"
+            <q-radio
+                v-model="value"
+                :val="true"
+                label="Example 1"
+            />
+            <q-radio
+                v-model="value"
+                :val="false"
+                label="Example 2"
             />
         </template>
     </RowTextWithLabel>
@@ -19,19 +22,17 @@
 
 <script>
 import RowTextWithLabel from 'components/RowTextWithLabel.vue';
-import InputDateDefault from 'components/InputDateDefault.vue';
 
 export default {
-    name: 'DateInput',
+    name: 'Radio',
 
     components: {
         RowTextWithLabel,
-        InputDateDefault,
     },
 
     data() {
         return {
-            date: '',
+            value: 1,
         };
     },
 
