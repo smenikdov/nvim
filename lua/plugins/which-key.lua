@@ -21,7 +21,6 @@ return {
 	config = function(_, opts)
 		local wk = require("which-key")
 		local lang = require("scripts.language")
-        local digraphs = require("better-digraphs")
 
 
 		-- <M is alt!!!!
@@ -34,9 +33,9 @@ return {
 		-- vim.keymap.set('i', '<M-a>', function () return vim.fn['codeium#Complete'] end, { expr = true, silent = true })
 
 		-- Digraphs
-		vim.keymap.set("i", "<C-k><C-k>", function()
-			return digraphs.digraphs("insert");
-		end)
+		-- vim.keymap.set("i", "<C-k><C-k>", function()
+		-- 	return digraphs.digraphs("insert");
+		-- end)
 
 		-- Increment and decrement
 		vim.keymap.set("n", "<C-a>", function()
@@ -108,40 +107,39 @@ return {
 				desc = "Terminal Toggle",
 			},
 
-			{ "<leader><leader>", ":Telescope find_files<CR>", desc = "Find File", hidden = true },
-			{ "<leader>/", ":Telescope live_grep_args<CR>", desc = "Find Text", hidden = true },
+			{ "<leader><leader>", ":FzfLua files<CR>", desc = "Find File", hidden = true },
+			{ "<leader>/", ":FzfLua live_grep<CR>", desc = "Find Text", hidden = true },
 			{ "<leader>q", ":CloseBuffer<CR>", desc = "Close Buffer", hidden = true },
 			{ "<leader>e", ":Neotree toggle<CR>", desc = "Toggle tree", hidden = true },
 
 			{ "<leader>f", group = "Find" },
-			{ "<leader>ff", "yiw:Telescope find_files<CR><C-r>0<Esc>", desc = "Find File" },
-			{ "<leader>ft", "yiw:Telescope live_grep_args<CR><C-r>0<Esc>", desc = "Find Text" },
-			{ "<leader>fm", "yiw:FindCurrentMethod<CR><C-r>0<Esc>", desc = "Find Current Method" },
+			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
+			{ "<leader>ft", ":FzfLua grep_cword<CR>", desc = "Find Text" },
+			{ "<leader>fm", ":FindMethod<CR>", desc = "Find Method" },
 			-- { "<leader>fr", ":Telescope live_grep_args<CR>\"url.+\" --iglob **/point.js<ESC>0", desc = "Find Route" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
-			-- { "<leader>ff",       ":SmartFind<CR>",                       desc = "Find" },
-			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffer" },
-			{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
-			{ "<leader>fc", ":Telescope git_commits<CR>", desc = "Find Commit" },
-			{ "<leader>f'", ":Telescope marks<CR>", desc = "Find Mark" },
-			{ "<leader>fi", ":Telescope current_buffer_fuzzy_find<CR>", desc = "Find In Buffer" },
-			{ "<leader>fs", ":Telescope find_files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
-			-- { "<leader>fp", ":Telescope projects<CR>", desc = "Find Projects" },
+			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
+			{ "<leader>fh", ":FzfLua helptags<CR>", desc = "Find Help" },
+			{ "<leader>f'", ":FzfLua marks<CR>", desc = "Find Mark" },
+			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
+			{ "<leader>fs", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
+			{ "<leader>fz", ":FzfLua zoxide", desc = "Find Zoxide" },
 
 			{ "<leader>g", group = "Git" },
-			{ "<leader>gr", ":LazyGit<CR>3++]", desc = "Git Remote Branches" },
-			{ "<leader>gc", ":LazyGit<CR>4+", desc = "Git Commits" },
-			{ "<leader>gg", ":LazyGit<CR>", desc = "Git Menu" },
-			{ "<leader>gs", ":Telescope git_status<CR>", desc = "Git Status" },
+			{ "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
 			{ "<leader>gh", ":Gitsigns blame_line<CR>", desc = "Git Hover" },
-			{ "<leader>gb", ":Gitsigns blame<CR>", desc = "Git Blame" },
-			-- { "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
-			{ "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
-			-- { "<leader>gb",       ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
+			{ "<leader>gb", ":FzfLua git_branches<CR>", desc = "Git Branches" },
+			{ "<leader>gB", ":Gitsigns blame<CR>", desc = "Git Blame" },
+			{ "<leader>gc", ":FzfLua git_commits<CR>", desc = "Git Commits" },
+			{ "<leader>gC", ":FzfLua git_bcommits<CR>", desc = "Git Buffer Commits" },
+			{ "<leader>gf", ":FzfLua git_hunks<CR>", desc = "Git Find Hunk" },
+			{ "<leader>gs", ":FzfLua git_status<CR>", desc = "Git Status" },
 
-			-- { "<leader>b", group = "Buffer" },
-			-- { "<leader>bd", ":CloseBuffer<CR>", desc = "Close Buffer" },
+			-- { "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
+			-- { "<leader>gf", ":FzfLua git_hunks<CR>]", desc = "Git Branches" },
+			-- { "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
+			-- { "<leader>gb", ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
 
 			{ "L", ":BufferLineCycleNext<CR>", hidden = true },
 			{ "H", ":BufferLineCyclePrev<CR>", hidden = true },
@@ -326,7 +324,7 @@ return {
 			-- },
 			{
 				"<leader>nn",
-                ":Noice telescope<CR>",
+                ":Noice fzf<CR>",
 				desc = "Notifications Menu",
 			},
 
