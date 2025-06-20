@@ -39,7 +39,13 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "buffer" },
+				{
+                    name = "buffer",
+                    option = {
+                        -- keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.]\w*\)*\)]]
+                        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|[a-zA-Zа-яА-ЯёЁ_][a-zA-Zа-яА-ЯёЁ\d_]*\%([\-.][a-zA-Zа-яА-ЯёЁ\d_]*\)*\)]]
+                    },
+                },
 				{ name = "path" },
 			}),
 		});
@@ -48,7 +54,12 @@ return {
         cmp.setup.cmdline({ '/', '?' }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = 'buffer' }
+				{
+                    name = "buffer",
+                    option = {
+                        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|[a-zA-Zа-яА-ЯёЁ_][a-zA-Zа-яА-ЯёЁ\d_]*\%([\-.][a-zA-Zа-яА-ЯёЁ\d_]*\)*\)]]
+                    },
+                },
             }
         });
 
