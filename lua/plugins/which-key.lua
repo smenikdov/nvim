@@ -123,7 +123,7 @@ return {
 			{ "<leader>f'", ":FzfLua marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
 			{ "<leader>fs", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
-			{ "<leader>fz", ":FzfLua zoxide", desc = "Find Zoxide" },
+			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
