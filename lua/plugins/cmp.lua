@@ -1,23 +1,24 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
 	dependencies = {
+        "neovim/nvim-lspconfig",
+        "hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+        "saadparwaiz1/cmp_luasnip",
+        -- "dmitmel/cmp-digraphs"
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
 			build = "make install_jsregexp",
 		},
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp",
-		-- "onsails/lspkind.nvim",
 	},
+
 	config = function()
 		local cmp = require("cmp")
-		-- local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
-    require("snippets.lua-like.init")
+        require("snippets.lua-like.init")
 
 		cmp.setup({
 			snippet = {
@@ -52,23 +53,26 @@ return {
         });
 
         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-        -- cmp.setup.cmdline(':', {
-        --     mapping = cmp.mapping.preset.cmdline(),
-        --     sources = cmp.config.sources(
-        --         {
-        --             { name = 'path' }
-        --         },
-        --         {
-        --             { name = 'cmdline' }
-        --         }
-        --     ),
-        --     matching = { disallow_symbol_nonprefix_matching = false }
-        -- });
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources(
+                {
+                    { name = 'path' }
+                },
+                {
+                    { name = 'cmdline' }
+                }
+            ),
+            matching = { disallow_symbol_nonprefix_matching = false }
+        });
 
-        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-        -- require('lspconfig')['dartls'].setup {
-        --     capabilities = capabilities
-        -- }
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local lspconfig = require('lspconfig')
+        local servers = { 'lua_ls', 'cssls', 'ts_ls' }
+        for _, server in ipairs(servers) do
+            lspconfig[server].setup {
+                capabilities = capabilities,
+            }
+        end
     end,
 }
