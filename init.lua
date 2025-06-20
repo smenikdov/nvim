@@ -13,5 +13,3 @@ local env = require("scripts/env-manager")
 env.setup()
 
 require("scripts/lsp")
-
-require("scripts/sgpt")

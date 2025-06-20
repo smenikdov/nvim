@@ -45,11 +45,16 @@ lspconfig.sqls.setup({
                     driver = 'postgresql',
                     dataSourceName = 'host=127.0.0.1 port=5432 user=postgres password=FCp9N4faxDQvjL59 dbname=vdelo-ben sslmode=disable',
                 },
+                -- TYUEMN
+                {
+                    driver = 'postgresql',
+                    dataSourceName = 'host=192.168.1.148 port=5434 user=ruslan password=FCp9N4faxDQvjL59 dbname=vdelo sslmode=disable',
+                },
                 -- INVESTRA
-                -- {
-                --     driver = 'postgresql',
-                --     dataSourceName = 'host=81.177.141.43 port=5432 user=investra password=RQ8RB7Xxt1DyS dbname=investra sslmode=disable',
-                -- },
+                {
+                    driver = 'postgresql',
+                    dataSourceName = 'host=81.177.141.43 port=5432 user=investra password=RQ8RB7Xxt1DyS dbname=investra sslmode=disable',
+                },
             },
         },
     },

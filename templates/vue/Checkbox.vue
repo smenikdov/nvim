@@ -1,20 +1,14 @@
 <template>
     <RowTextWithLabel
-        left-part="Да?"
+        left-part="Согласие"
         custom-right-part
         vertical
         required
     >
         <template v-slot:right>
-            <q-radio
+            <q-checkbox
                 v-model="value"
-                :val="true"
-                label="Example 1"
-            />
-            <q-radio
-                v-model="value"
-                :val="false"
-                label="Example 2"
+                label="Example"
             />
         </template>
     </RowTextWithLabel>
@@ -24,7 +18,7 @@
 import RowTextWithLabel from 'components/RowTextWithLabel.vue';
 
 export default {
-    name: 'Radio',
+    name: 'Checkbox',
 
     components: {
         RowTextWithLabel,
@@ -32,7 +26,7 @@ export default {
 
     data() {
         return {
-            value: 1,
+            value: true,
         };
     },
 

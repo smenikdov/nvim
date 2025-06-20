@@ -123,10 +123,10 @@ return {
 			{ "<leader>f'", ":FzfLua marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
 			{ "<leader>fs", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
-			{ "<leader>fz", ":FzfLua zoxide", desc = "Find Zoxide" },
+			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 
 			{ "<leader>g", group = "Git" },
-			{ "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
+			-- { "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
 			{ "<leader>gh", ":Gitsigns blame_line<CR>", desc = "Git Hover" },
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			{ "<leader>gb", ":FzfLua git_branches<CR>", desc = "Git Branches" },
@@ -233,44 +233,44 @@ return {
 			{ "<leader>vS", "/^\\s*<style<CR>:noh<CR>zz", desc = "Vue Style" },
 			{ "<leader>vt", "G/^\\s*<template<CR>:noh<CR>zz", desc = "Vue Template" },
 
-			{ "<leader>t", group = "Terminal" },
-			{
-				"<leader>tt",
-				":1ToggleTerm name='Master'<CR>",
-				desc = "Terminal Master",
-			},
-			{
-				"<leader>t1",
-				":4ToggleTerm name='Terminal 1'<CR>",
-				desc = "Terminal 1",
-			},
-			{
-				"<leader>t2",
-				":5ToggleTerm name='Terminal 2'<CR>",
-				desc = "Terminal 2",
-			},
-			{
-				"<leader>t3",
-				":6ToggleTerm name='Terminal 3'<CR>",
-				desc = "Terminal 3",
-			},
-
-			{ "<leader>s", group = "Spectre" },
-			{
-				"<leader>ss",
-                ":lua require('spectre').toggle()<CR>",
-				desc = "Spectre Toggle",
-			},
-			{
-				"<leader>sw",
-                ":lua require('spectre').open_visual({select_word=true})<CR>",
-				desc = "Spectre Word",
-			},
-			{
-				"<leader>sf",
-                ":lua require('spectre').open_file_search({select_word=true})<CR>",
-				desc = "Spectre File",
-			},
+			-- { "<leader>t", group = "Terminal" },
+			-- {
+			-- 	"<leader>tt",
+			-- 	":1ToggleTerm name='Master'<CR>",
+			-- 	desc = "Terminal Master",
+			-- },
+			-- {
+			-- 	"<leader>t1",
+			-- 	":4ToggleTerm name='Terminal 1'<CR>",
+			-- 	desc = "Terminal 1",
+			-- },
+			-- {
+			-- 	"<leader>t2",
+			-- 	":5ToggleTerm name='Terminal 2'<CR>",
+			-- 	desc = "Terminal 2",
+			-- },
+			-- {
+			-- 	"<leader>t3",
+			-- 	":6ToggleTerm name='Terminal 3'<CR>",
+			-- 	desc = "Terminal 3",
+			-- },
+			--
+			-- { "<leader>s", group = "Spectre" },
+			-- {
+			-- 	"<leader>ss",
+			--              ":lua require('spectre').toggle()<CR>",
+			-- 	desc = "Spectre Toggle",
+			-- },
+			-- {
+			-- 	"<leader>sw",
+			--              ":lua require('spectre').open_visual({select_word=true})<CR>",
+			-- 	desc = "Spectre Word",
+			-- },
+			-- {
+			-- 	"<leader>sf",
+			--              ":lua require('spectre').open_file_search({select_word=true})<CR>",
+			-- 	desc = "Spectre File",
+			-- },
 
 			-- { "<leader>s", group = "Spell" },
 			-- {
@@ -328,26 +328,26 @@ return {
 				desc = "Notifications Menu",
 			},
 
-			{ "<leader>a", group = "AI" },
-			{
-			    "<leader>aa",
-			    ":SgptAsk<CR>",
-			    desc = "AI Ask",
-                mode = "n",
-			},
-			{
-			    "<leader>aa",
-			    ":SgptAskSelection<CR>",
-			    desc = "AI Ask",
-                mode = "v",
-                hidden = true,
-			},
-			{
-			    "<leader>aq",
-			    "dd:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
-			    desc = "AI Ask Query",
-                mode = "n",
-			},
+			-- { "<leader>a", group = "AI" },
+			-- {
+			--     "<leader>aa",
+			--     ":SgptAsk<CR>",
+			--     desc = "AI Ask",
+			--              mode = "n",
+			-- },
+			-- {
+			--     "<leader>aa",
+			--     ":SgptAskSelection<CR>",
+			--     desc = "AI Ask",
+			--              mode = "v",
+			--              hidden = true,
+			-- },
+			-- {
+			--     "<leader>aq",
+			--     "dd:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
+			--     desc = "AI Ask Query",
+			--              mode = "n",
+			-- },
 			-- {
 			--     "<leader>aq",
 			--     "d:r!sgpt --code 'Выполни задание по '.%:e.'. <C-r>1' | sed 's/[[:space:]]*$//'<CR>",
