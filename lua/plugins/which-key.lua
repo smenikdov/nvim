@@ -2,11 +2,7 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	tag = "stable",
-	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	},
+	opts = {},
 
 	keys = {
 		{
@@ -22,8 +18,6 @@ return {
 		local wk = require("which-key")
 		local lang = require("scripts.language")
 
-
-		-- <M is alt!!!!
 
 		-- AI
 		-- vim.keymap.set('i', '<C-a>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
@@ -89,8 +83,6 @@ return {
 		wk.add({
 			{ "<Esc>", ":noh<CR>", hidden = true },
 			{ "<C-s>", "<Esc>:w<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Save" },
-			-- { "<C-q>", "<Esc>:q<CR>", mode = { "n", "i", "v" }, hidden = true, desc = "Close" },
-			-- { "<C-a>", "ggVG", hidden = true, desc = "Select all" },
 			-- { "<Esc>", "<C-\\><C-n>", mode = "t", hidden = true, desc = "Quit terminal emulator" },
 
 			-- {
@@ -100,12 +92,12 @@ return {
 			-- 	hidden = true,
 			-- 	desc = "Terminal Close",
 			-- },
-			{
-				"<C-\\>",
-				":ToggleTerm<CR>",
-				hidden = true,
-				desc = "Terminal Toggle",
-			},
+			-- {
+			-- 	"<C-\\>",
+			-- 	":ToggleTerm<CR>",
+			-- 	hidden = true,
+			-- 	desc = "Terminal Toggle",
+			-- },
 
 			{ "<leader><leader>", ":FzfLua files<CR>", desc = "Find File", hidden = true },
 			{ "<leader>/", ":FzfLua live_grep<CR>", desc = "Find Text", hidden = true },
@@ -115,15 +107,15 @@ return {
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
 			{ "<leader>ft", ":FzfLua grep_cword<CR>", desc = "Find Text" },
-			{ "<leader>fm", ":FindMethod<CR>", desc = "Find Method" },
-			-- { "<leader>fr", ":Telescope live_grep_args<CR>\"url.+\" --iglob **/point.js<ESC>0", desc = "Find Route" },
+			{ "<leader>fF", ":FindMethod<CR>", desc = "Find Function" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
 			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
-			{ "<leader>fh", ":FzfLua helptags<CR>", desc = "Find Help" },
-			{ "<leader>f'", ":FzfLua marks<CR>", desc = "Find Mark" },
+			{ "<leader>fm", ":FzfLua marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
 			{ "<leader>fs", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
+			{ "<leader>fh", ":FzfLua git_hunks<CR>", desc = "Find Hunk" },
+			{ "<leader>fH", ":FzfLua helptags<CR>", desc = "Find Help" },
 
 			{ "<leader>g", group = "Git" },
 			-- { "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
@@ -133,7 +125,6 @@ return {
 			{ "<leader>gB", ":Gitsigns blame<CR>", desc = "Git Blame" },
 			{ "<leader>gc", ":FzfLua git_commits<CR>", desc = "Git Commits" },
 			{ "<leader>gC", ":FzfLua git_bcommits<CR>", desc = "Git Buffer Commits" },
-			{ "<leader>gf", ":FzfLua git_hunks<CR>", desc = "Git Find Hunk" },
 			{ "<leader>gs", ":FzfLua git_status<CR>", desc = "Git Status" },
 
 			-- { "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
@@ -141,8 +132,8 @@ return {
 			-- { "<leader>gR", ":Gitsigns refresh<CR>", desc = "Git Refresh" },
 			-- { "<leader>gb", ":GitSigns toggle_current_line_blame<CR>", desc = "Open Blame" },
 
-			{ "L", ":BufferLineCycleNext<CR>", hidden = true },
-			{ "H", ":BufferLineCyclePrev<CR>", hidden = true },
+			{ "L", ":bnext<CR>", hidden = true },
+			{ "H", ":bprevious<CR>", hidden = true },
 
 			{ "<leader>c", group = "Code" },
 			{ "<leader>cd", vim.lsp.buf.definition, desc = "Code Definition" },
@@ -317,11 +308,11 @@ return {
                 ":Noice dismiss<CR>",
 				desc = "Notifications Clear",
 			},
-			-- {
-			-- 	"<leader>nl",
-			--              ":Noice last<CR>",
-			-- 	desc = "Notifications Last",
-			-- },
+            {
+                "<leader>nl",
+                ":Noice last<CR>",
+                desc = "Notifications Last",
+            },
 			{
 				"<leader>nn",
                 ":Noice fzf<CR>",
