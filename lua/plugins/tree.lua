@@ -1,7 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	-- branch = "v3.x",
-    commit = '2d013dbc4a2ecf6b0cc8dea74dfa3d783e36734a',
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
