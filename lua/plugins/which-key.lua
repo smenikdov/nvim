@@ -116,6 +116,7 @@ return {
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 			{ "<leader>fh", ":FzfLua git_hunks<CR>", desc = "Find Hunk" },
 			{ "<leader>fH", ":FzfLua helptags<CR>", desc = "Find Help" },
+			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
 
 			{ "<leader>g", group = "Git" },
 			-- { "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
@@ -191,7 +192,7 @@ return {
                 desc = "Code Location",
             },
             {
-                "<leader>cQ",
+                "<leader>cq",
                 "<cmd>Trouble qflist toggle<cr>",
                 desc = "Code Quickfix",
             },

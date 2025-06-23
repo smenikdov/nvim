@@ -45,6 +45,8 @@ g.codeium_disable_bindings = 1
 
 vim.api.nvim_create_user_command('AA', 'terminal aichat <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('AC', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
+-- норм работает, но пока не пользуюсь, можно лучше придумать
+-- vim.api.nvim_create_user_command('Rg', 'silent grep <args>', { nargs = '+' })
 
 -----------------------------------------------------------
 -- Neovim UI
