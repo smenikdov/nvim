@@ -17,6 +17,13 @@ require("mason-lspconfig").setup {
 
 local lspconfig = require("lspconfig")
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    severity_sort = true,
+})
+
 lspconfig.lua_ls.setup({})
 lspconfig.cssls.setup({})
 lspconfig.html.setup({})

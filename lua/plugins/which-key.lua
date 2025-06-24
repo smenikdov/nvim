@@ -107,16 +107,18 @@ return {
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
 			{ "<leader>ft", ":FzfLua grep_cword<CR>", desc = "Find Text" },
+			{ "<leader>fT", ":FzfLua tags<CR>", desc = "Find Tags" },
 			{ "<leader>fF", ":FindMethod<CR>", desc = "Find Function" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
 			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fm", ":FzfLua marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
-			{ "<leader>fs", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Snippet" },
+			{ "<leader>fp", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Pattern" },
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 			{ "<leader>fh", ":FzfLua git_hunks<CR>", desc = "Find Hunk" },
 			{ "<leader>fH", ":FzfLua helptags<CR>", desc = "Find Help" },
 			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
+			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Symbols" },
 
 			{ "<leader>g", group = "Git" },
 			-- { "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
@@ -247,22 +249,22 @@ return {
 			-- 	desc = "Terminal 3",
 			-- },
 			--
-			-- { "<leader>s", group = "Spectre" },
-			-- {
-			-- 	"<leader>ss",
-			--              ":lua require('spectre').toggle()<CR>",
-			-- 	desc = "Spectre Toggle",
-			-- },
-			-- {
-			-- 	"<leader>sw",
-			--              ":lua require('spectre').open_visual({select_word=true})<CR>",
-			-- 	desc = "Spectre Word",
-			-- },
-			-- {
-			-- 	"<leader>sf",
-			--              ":lua require('spectre').open_file_search({select_word=true})<CR>",
-			-- 	desc = "Spectre File",
-			-- },
+			{ "<leader>s", group = "Spectre" },
+			{
+				"<leader>ss",
+			             ":lua require('spectre').toggle()<CR>",
+				desc = "Spectre Toggle",
+			},
+			{
+                "<leader>sw",
+                ":lua require('spectre').open_visual({select_word=true})<CR>",
+                desc = "Spectre Word",
+            },
+            {
+                "<leader>sf",
+                ":lua require('spectre').open_file_search({select_word=true})<CR>",
+                desc = "Spectre File",
+            },
 
 			-- { "<leader>s", group = "Spell" },
 			-- {
