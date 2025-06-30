@@ -54,8 +54,8 @@ vim.api.nvim_create_user_command("Sorti", function()
 end, { range = true })
 
 vim.api.nvim_create_user_command('GenerateCtags', '!ctags -R --exclude=node_modules .', {})
-vim.api.nvim_create_user_command('AA', 'terminal aichat <args>', { nargs = '*' })
-vim.api.nvim_create_user_command('AC', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
+vim.api.nvim_create_user_command('Aask', 'terminal aichat <args>', { nargs = '*' })
+vim.api.nvim_create_user_command('Acode', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
 -- норм работает, но пока не пользуюсь, можно лучше придумать
 -- vim.api.nvim_create_user_command('Rg', 'silent grep <args>', { nargs = '+' })
 
