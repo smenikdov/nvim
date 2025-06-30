@@ -44,6 +44,16 @@ g.codeium_disable_bindings = 1
 --     end,
 -- })
 
+vim.api.nvim_create_user_command("Sotri", function()
+    local start_pos = vim.fn.getpos("'<")[2]
+    local end_pos = vim.fn.getpos("'>")[2]
+    local lines = vim.api.nvim_buf_get_lines(0, start_pos - 1, end_pos, false)
+    table.sort(lines, function(a, b)
+        return #a < #b
+    end)
+    vim.api.nvim_buf_set_lines(0, start_pos - 1, end_pos, false, lines)
+end, { range = true })
+
 vim.api.nvim_create_user_command('AA', 'terminal aichat <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('AC', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
 -- норм работает, но пока не пользуюсь, можно лучше придумать
@@ -67,7 +77,22 @@ opt.scrolloff = 10
 -- opt.linebreak = true -- Wrap on word boundary
 -- opt.termguicolors = true -- Enable 24-bit RGB colors
 -- opt.laststatus = 3 -- Set global statusline
+vim.api.nvim_create_user_command("Sotri", function()
+  -- Получаем границы визуального выделения
+  local start_pos = vim.fn.getpos("'<")[2]
+  local end_pos = vim.fn.getpos("'>")[2]
 
+  -- Извлекаем строки из буфера
+  local lines = vim.api.nvim_buf_get_lines(0, start_pos - 1, end_pos, false)
+
+  -- Сортировка по длине строки
+  table.sort(lines, function(a, b)
+    return #a < #b
+  end)
+
+  -- Заменяем исходные строки отсортированными
+  vim.api.nvim_buf_set_lines(0, start_pos - 1, end_pos, false, lines)
+end, { range = true, desc = "Сортировка выделенных строк по длине" })
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
