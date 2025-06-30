@@ -121,7 +121,7 @@ return {
 			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Symbols" },
 
 			{ "<leader>g", group = "Git" },
-			-- { "<leader>gg", ":LazyGit<CR>", desc = "Lazy git" },
+			{ "<leader>gg", ":G<CR>", desc = "Git Menu" },
 			{ "<leader>gh", ":Gitsigns blame_line<CR>", desc = "Git Hover" },
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			{ "<leader>gb", ":FzfLua git_branches<CR>", desc = "Git Branches" },
