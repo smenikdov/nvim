@@ -78,7 +78,7 @@ return {
 		vim.keymap.set("v", "<C-l>", function() end, { expr = true, silent = true })
 
         -- vim.keymap.set('v', '<Leader>cf', vim.lsp.buf.format)
-
+        
 		wk.setup(opts.setup)
 		wk.add({
 			{ "<Esc>", ":noh<CR>", hidden = true },
@@ -115,10 +115,10 @@ return {
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
 			{ "<leader>fp", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Pattern" },
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
-			{ "<leader>fh", ":FzfLua git_hunks<CR>", desc = "Find Hunk" },
-			{ "<leader>fH", ":FzfLua helptags<CR>", desc = "Find Help" },
+			{ "<leader>fh", ":FzfLua helptags<CR>", desc = "Find Help" },
 			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
 			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Symbols" },
+			{ "<leader>fS", ":FzfLua lsp_workspace_symbols<CR>", desc = "Find Symbols" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", ":G<CR>", desc = "Git Menu" },
@@ -126,8 +126,8 @@ return {
 			{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Git Preview" },
 			{ "<leader>gb", ":FzfLua git_branches<CR>", desc = "Git Branches" },
 			{ "<leader>gB", ":Gitsigns blame<CR>", desc = "Git Blame" },
-			{ "<leader>gc", ":FzfLua git_commits<CR>", desc = "Git Commits" },
-			{ "<leader>gC", ":FzfLua git_bcommits<CR>", desc = "Git Buffer Commits" },
+			{ "<leader>gC", ":FzfLua git_commits<CR>", desc = "Git Commits" },
+			{ "<leader>gc", ":FzfLua git_bcommits<CR>", desc = "Git Buffer Commits" },
 			{ "<leader>gs", ":FzfLua git_status<CR>", desc = "Git Status" },
 
 			-- { "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Git Diffthis" },
@@ -199,14 +199,9 @@ return {
                 desc = "Code Quickfix",
             },
 
-			-- { "<leader>m", group = "Move" },
-			-- { "<leader>md", vim.lsp.buf.definition, desc = "Move To Definition" },
-			-- { "<leader>mD", vim.lsp.buf.declaration, desc = "Move To Declaration" },
-			-- { "<leader>mr", vim.lsp.buf.references, desc = "Move To References" },
-
 			{ "gd", vim.lsp.buf.definition, desc = "Definition" },
 			{ "gD", vim.lsp.buf.declaration, desc = "Declaration" },
-			{ "gr", vim.lsp.buf.references, desc = "References" },
+			-- { "gr", vim.lsp.buf.references, desc = "References" },
 
 			{ "<leader>v", group = "Vue" },
 			{ "<leader>vm", "/^\\s*methods:\\s*{<CR>:noh<CR>zz", desc = "Vue Methods" },
@@ -253,13 +248,14 @@ return {
 			{
 				"<leader>o",
 				function()
-                    require("oil").open_float(nil, {
-                        -- preview = {
-                        --     vertical = true,
-                        -- }
-                    })
-				end,
+                    require("oil").open_float(nil, {}) end,
 				desc = "Oil",
+			},
+
+			{
+				"<leader>u",
+                ":UndotreeShow<CR>:UndotreeFocus<CR>",
+				desc = "Undotree",
 			},
 
 			{ "<leader>n", group = "Notifications" },
@@ -355,24 +351,6 @@ return {
 			--     ":call arduino#ChooseBoard()<CR>",
 			--     desc = "Arduino Choose Board",
 			-- },
-
-			{ "<leader>r", group = "Rest" },
-            { "<leader>rb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad" },
-            { "<leader>rc", "<cmd>lua require('kulala').copy()<cr>", desc = "Copy as cURL" },
-            { "<leader>rC", "<cmd>lua require('kulala').from_curl()<cr>", desc = "Paste from curl" },
-            {
-                "<leader>rg",
-                "<cmd>lua require('kulala').download_graphql_schema()<cr>",
-                desc = "Download GraphQL schema"
-            },
-            { "<leader>ri", "<cmd>lua require('kulala').inspect()<cr>", desc = "Inspect current request" },
-            { "<leader>rn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
-            { "<leader>rp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
-            { "<leader>rq", "<cmd>lua require('kulala').close()<cr>", desc = "Close window" },
-            { "<leader>rr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request" },
-            { "<leader>rs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
-            { "<leader>rS", "<cmd>lua require('kulala').show_stats()<cr>", desc = "Show stats" },
-            { "<leader>rt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
 		})
 	end,
 }

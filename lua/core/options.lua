@@ -28,7 +28,6 @@ opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.wrap = false
 opt.spelloptions = "camel"
 
-
 -- CODEIUM (windsurf)
 g.codeium_enabled = true
 g.codeium_disable_bindings = 1
@@ -44,7 +43,7 @@ g.codeium_disable_bindings = 1
 --     end,
 -- })
 
-vim.api.nvim_create_user_command("Sotri", function()
+vim.api.nvim_create_user_command("Sorti", function()
     local start_pos = vim.fn.getpos("'<")[2]
     local end_pos = vim.fn.getpos("'>")[2]
     local lines = vim.api.nvim_buf_get_lines(0, start_pos - 1, end_pos, false)
@@ -54,6 +53,7 @@ vim.api.nvim_create_user_command("Sotri", function()
     vim.api.nvim_buf_set_lines(0, start_pos - 1, end_pos, false, lines)
 end, { range = true })
 
+vim.api.nvim_create_user_command('GenerateCtags', '!ctags -R --exclude=node_modules .', {})
 vim.api.nvim_create_user_command('AA', 'terminal aichat <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('AC', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
 -- норм работает, но пока не пользуюсь, можно лучше придумать
