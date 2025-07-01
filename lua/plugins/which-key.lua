@@ -106,8 +106,8 @@ return {
 
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
-			{ "<leader>ft", ":FzfLua grep_cword<CR>", desc = "Find Text" },
-			{ "<leader>fT", ":FzfLua tags<CR>", desc = "Find Tags" },
+			{ "<leader>fw", ":FzfLua grep_cword<CR>", desc = "Find Text" },
+			{ "<leader>ft", ":FzfLua tags<CR>", desc = "Find Tags" },
 			{ "<leader>fF", ":FindMethod<CR>", desc = "Find Function" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
 			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
