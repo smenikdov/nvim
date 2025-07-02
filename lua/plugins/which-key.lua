@@ -170,12 +170,12 @@ return {
 			{ "<leader>cr", vim.lsp.buf.references, desc = "Code References" },
 			{ "<leader>ci", vim.lsp.buf.implementation, desc = "Code Implementation" },
             {
-                "<leader>cx",
+                "<leader>cX",
                 "<cmd>Trouble diagnostics toggle<cr>",
                 desc = "Code Diagnostics",
             },
             {
-                "<leader>cX",
+                "<leader>cx",
                 "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
                 desc = "Code Buffer Diagnostics",
             },
