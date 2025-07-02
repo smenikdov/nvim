@@ -44,3 +44,5 @@ vim.fn.getcwd
 vim.fn.glob
 vim.fn.globpath
 vim.cmd.edit
+
+test shock
