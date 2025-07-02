@@ -57,6 +57,7 @@ vim.api.nvim_create_user_command('GenerateCtags', '!ctags -R --exclude=node_modu
 vim.api.nvim_create_user_command('Aask', 'terminal aichat <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('Acode', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('E', 'e %:p:h/<args>', { nargs = '*' })
+vim.api.nvim_create_user_command('SSH', 'e oil-ssh://<args>//', { nargs = 1 })
 -- норм работает, но пока не пользуюсь, можно лучше придумать
 -- vim.api.nvim_create_user_command('Rg', 'silent grep <args>', { nargs = '+' })
 
@@ -117,42 +118,3 @@ vim.filetype.add({
         hbs = "html"
     },
 })
-
------------------------------------------------------------
--- Startup
------------------------------------------------------------
--- -- Disable nvim intro
--- opt.shortmess:append "sI"
---
--- -- -- Disable builtin plugins
--- local disabled_built_ins = {
---    "2html_plugin",
---    "getscript",
---    "getscriptPlugin",
---    "gzip",
---    "logipat",
---    "netrw",
---    "netrwPlugin",
---    "netrwSettings",
---    "netrwFileHandlers",
---    "matchit",
---    "tar",
---    "tarPlugin",
---    "rrhelper",
---    "spellfile_plugin",
---    "vimball",
---    "vimballPlugin",
---    "zip",
---    "zipPlugin",
---    "tutor",
---    "rplugin",
---    "synmenu",
---    "optwin",
---    "compiler",
---    "bugreport",
---    "ftplugin",
--- }
---
--- for _, plugin in pairs(disabled_built_ins) do
---    g["loaded_" .. plugin] = 1
--- end
