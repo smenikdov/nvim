@@ -106,8 +106,9 @@ return {
 
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
-			{ "<leader>fw", ":FzfLua grep_cword<CR>", desc = "Find Text" },
-			{ "<leader>ft", ":FzfLua tags<CR>", desc = "Find Tags" },
+			{ "<leader>fw", ":FzfLua grep_cword<CR>", desc = "Find Word" },
+			{ "<leader>ft", ":FzfLua btags<CR>", desc = "Find Buffer Tags" },
+			{ "<leader>fT", ":FzfLua tags<CR>", desc = "Find Tags" },
 			{ "<leader>fF", ":FindMethod<CR>", desc = "Find Function" },
 			{ "<leader>fr", ":FindRoute<CR>", desc = "Find Route" },
 			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
@@ -117,7 +118,7 @@ return {
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 			{ "<leader>fh", ":FzfLua helptags<CR>", desc = "Find Help" },
 			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
-			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Symbols" },
+			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Buffer Symbols" },
 			{ "<leader>fS", ":FzfLua lsp_workspace_symbols<CR>", desc = "Find Symbols" },
 
 			{ "<leader>g", group = "Git" },
