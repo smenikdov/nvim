@@ -111,14 +111,14 @@ return {
                 ["<CR>"] = "open",
                 ["R"] = "refresh",
                 ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-                ["<esc>"] = "cancel",
-                ["?"] = "show_help",
+                ["g?"] = "show_help",
                 ["C"] = "close_node",
                 ["<"] = "prev_source",
                 [">"] = "next_source",
 
                 ["<2-LeftMouse>"] = "",
                 ["<space>"] = "",
+                ["<esc>"] = "",
                 ["S"] = "",
                 ["s"] = "",
                 ["t"] = "",
@@ -127,6 +127,7 @@ return {
                 ["z"] = "",
                 ["w"] = "",
                 [";"] = "",
+                ["?"] = "",
 
                 ["a"] = {
                     "add",
