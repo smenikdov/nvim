@@ -45,7 +45,7 @@ export default {
     },
 
     data() {
-        return () {
+        return {
             isOpenModal: false,
             form: {
                 input: '',
