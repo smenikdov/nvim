@@ -102,7 +102,7 @@ return {
 			{ "<leader><leader>", ":FzfLua files<CR>", desc = "Find File", hidden = true },
 			{ "<leader>/", ":FzfLua live_grep<CR>", desc = "Find Text", hidden = true },
 			{ "<leader>q", ":CloseBuffer<CR>", desc = "Close Buffer", hidden = true },
-			{ "<leader>e", ":Neotree toggle<CR>", desc = "Toggle tree", hidden = true },
+			{ "<leader>e", ":Yazi<CR>", desc = "Toggle tree", hidden = true },
 
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
@@ -249,7 +249,10 @@ return {
 			{
 				"<leader>o",
 				function()
-                    require("oil").open_float(nil, {}) end,
+                    -- vim.cmd("vsplit | wincmd l")
+                    -- require("oil").open()
+                    require("oil").open_float(nil, {})
+                end,
 				desc = "Oil",
 			},
 

@@ -11,13 +11,20 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)
 
 g.mapleader = " "
 g.maplocalleader = "\\"
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
 g.autoformat = false
 g.omni_sql_no_default_maps = 1
 g.codeium_filetypes = {
     typr = false
 }
+
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+-- g.netrw_banner = 0
+-- g.netrw_browse_split = 4
+-- g.netrw_winsize = 25
+-- g.netrw_altv = 1
+-- g.netrw_alto = 1
+
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
