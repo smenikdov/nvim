@@ -102,7 +102,18 @@ return {
 			{ "<leader><leader>", ":FzfLua files<CR>", desc = "Find File", hidden = true },
 			{ "<leader>/", ":FzfLua live_grep<CR>", desc = "Find Text", hidden = true },
 			{ "<leader>q", ":CloseBuffer<CR>", desc = "Close Buffer", hidden = true },
-			{ "<leader>e", ":Yazi<CR>", desc = "Toggle tree", hidden = true },
+			{ "<leader>y", ":Yazi cwd<CR>", desc = "Yazi", hidden = true },
+			{
+				"<leader>o",
+				function()
+                    -- vim.cmd("vsplit | wincmd l")
+                    -- require("oil").open()
+                    require("oil").open_float(nil, {})
+                end,
+                hidden = true,
+			},
+			{ "<leader>u", ":UndotreeShow<CR>:UndotreeFocus<CR>", hidden = true },
+
 
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
@@ -120,6 +131,7 @@ return {
 			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
 			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Buffer Symbols" },
 			{ "<leader>fS", ":FzfLua lsp_workspace_symbols<CR>", desc = "Find Symbols" },
+			{ "<leader>fg", ":FzfLua git_status<CR>", desc = "Find Git" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", ":G<CR>", desc = "Git Menu" },
@@ -245,22 +257,6 @@ return {
 			-- 	desc = "Terminal 3",
 			-- },
 			--
-
-			{
-				"<leader>o",
-				function()
-                    -- vim.cmd("vsplit | wincmd l")
-                    -- require("oil").open()
-                    require("oil").open_float(nil, {})
-                end,
-				desc = "Oil",
-			},
-
-			{
-				"<leader>u",
-                ":UndotreeShow<CR>:UndotreeFocus<CR>",
-				desc = "Undotree",
-			},
 
 			{ "<leader>n", group = "Notifications" },
 			{
