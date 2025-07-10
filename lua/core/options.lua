@@ -35,6 +35,12 @@ opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.wrap = false
 opt.spelloptions = "camel"
 
+-- Undo
+opt.undofile = true
+opt.undodir = vim.fn.expand('~/.config/nvim/undo')
+opt.undolevels = 1000
+opt.undoreload = 10000
+
 -- CODEIUM (windsurf)
 g.codeium_enabled = true
 g.codeium_disable_bindings = 1

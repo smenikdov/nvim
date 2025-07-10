@@ -7,8 +7,8 @@
 
 (template_string
   (string_fragment) @spell
-  (#not-match? @spell "^\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP)"))
+  (#not-match? @spell "^\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|WITH)"))
 
 (string
   (string_fragment) @spell
-  (#not-match? @spell "^\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP)"))
+  (#not-match? @spell "^\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|WITH)"))
