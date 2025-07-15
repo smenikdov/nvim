@@ -35,6 +35,15 @@ opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.wrap = false
 opt.spelloptions = "camel"
 
+g.vimwiki_list = {
+    {
+        path = '~/projects/zero/',
+        syntax = 'markdown',
+        ext = '.md'
+    }
+}
+g.vimwiki_global_ext = 0
+
 -- Undo
 opt.undofile = true
 opt.undodir = vim.fn.expand('~/.config/nvim/undo')
@@ -67,7 +76,7 @@ vim.api.nvim_create_user_command("Sorti", function()
 end, { range = true })
 
 vim.api.nvim_create_user_command('GenerateCtags', '!ctags -R --exclude=node_modules .', {})
-vim.api.nvim_create_user_command('Aask', 'terminal aichat <args>', { nargs = '*' })
+vim.api.nvim_create_user_command('Ask', 'terminal aichat --session <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('Acode', 'terminal aichat --role \\%code\\% <args>', { nargs = '*' })
 vim.api.nvim_create_user_command('E', 'e %:p:h/<args>', { nargs = '*' })
 vim.api.nvim_create_user_command('SSH', 'e oil-ssh://<args>//', { nargs = 1 })
@@ -93,22 +102,7 @@ opt.scrolloff = 10
 -- opt.linebreak = true -- Wrap on word boundary
 -- opt.termguicolors = true -- Enable 24-bit RGB colors
 -- opt.laststatus = 3 -- Set global statusline
-vim.api.nvim_create_user_command("Sotri", function()
-  -- Получаем границы визуального выделения
-  local start_pos = vim.fn.getpos("'<")[2]
-  local end_pos = vim.fn.getpos("'>")[2]
 
-  -- Извлекаем строки из буфера
-  local lines = vim.api.nvim_buf_get_lines(0, start_pos - 1, end_pos, false)
-
-  -- Сортировка по длине строки
-  table.sort(lines, function(a, b)
-    return #a < #b
-  end)
-
-  -- Заменяем исходные строки отсортированными
-  vim.api.nvim_buf_set_lines(0, start_pos - 1, end_pos, false, lines)
-end, { range = true, desc = "Сортировка выделенных строк по длине" })
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
