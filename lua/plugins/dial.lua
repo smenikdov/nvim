@@ -241,6 +241,29 @@ return {
             cyclic = true,
         })
 
+        a.local_dev = augend.constant.new({
+            elements = {
+                "local",
+                "dev",
+            },
+            word = true,
+            cyclic = true,
+        })
+
+        a.http_methods = augend.constant.new({
+            elements = {
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS",
+                "HEAD",
+            },
+            word = true,
+            cyclic = true,
+        })
+
 
         local f = {}
         f.default = {
@@ -323,6 +346,14 @@ return {
             a.items_class,
             a.model_value,
         }
+
+        f.sh = {
+            augend.integer.alias.decimal,
+            augend.constant.alias.bool,
+            a.local_dev,
+            a.http_methods,
+        }
+
         return {
             groups = {
                 default = f.default,
@@ -334,6 +365,7 @@ return {
                 vue = f.vue,
                 dart = f.dart,
                 sql = f.sql,
+                sh = f.sh,
             },
         }
     end,
@@ -351,6 +383,7 @@ return {
             "vue",
             "dart",
             "sql",
+            "sh",
         }
 
         vim.api.nvim_create_augroup("Dial", { clear = true })

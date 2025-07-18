@@ -81,6 +81,12 @@ vim.api.nvim_create_user_command('Acode', 'terminal aichat --role \\%code\\% <ar
 vim.api.nvim_create_user_command('E', 'e %:p:h/<args>', { nargs = '*' })
 vim.api.nvim_create_user_command('SSH', 'e oil-ssh://<args>//', { nargs = 1 })
 vim.api.nvim_create_user_command('SCP', 'e scp://<args>//', { nargs = 1 })
+vim.api.nvim_create_user_command('SH', function()
+    vim.cmd('terminal bash %')
+end, { nargs = '*' })
+vim.api.nvim_create_user_command('API', function()
+    vim.cmd('terminal bash % | jq')
+end, { nargs = '*' })
 -- норм работает, но пока не пользуюсь, можно лучше придумать
 -- vim.api.nvim_create_user_command('Rg', 'silent grep <args>', { nargs = '+' })
 

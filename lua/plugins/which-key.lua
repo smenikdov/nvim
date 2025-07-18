@@ -102,7 +102,8 @@ return {
 			{ "<leader><leader>", ":FzfLua files<CR>", desc = "Find File", hidden = true },
 			{ "<leader>/", ":FzfLua live_grep<CR>", desc = "Find Text", hidden = true },
 			{ "<leader>q", ":CloseBuffer<CR>", desc = "Close Buffer", hidden = true },
-			{ "<leader>y", ":Yazi cwd<CR>", desc = "Yazi", hidden = true },
+			{ "<leader>yy", ":Yazi<CR>", desc = "Yazi", hidden = true },
+			{ "<leader>yc", ":Yazi cwd<CR>", desc = "Yazi Cwd", hidden = true },
 			{
 				"<leader>o",
 				function()
