@@ -119,6 +119,7 @@ return {
 			{ "<leader>f", group = "Find" },
 			{ "<leader>ff", "yiw:FzfLua files query=<C-r>0<CR>", desc = "Find File" },
 			{ "<leader>fw", ":FzfLua grep_cword<CR>", desc = "Find Word" },
+			{ "<leader>fW", ":FzfLua grep_cWORD<CR>", desc = "Find Word" },
 			{ "<leader>ft", ":FzfLua btags<CR>", desc = "Find Buffer Tags" },
 			{ "<leader>fT", ":FzfLua tags<CR>", desc = "Find Tags" },
 			{ "<leader>fF", ":FindMethod<CR>", desc = "Find Function" },
@@ -133,6 +134,7 @@ return {
 			{ "<leader>fs", ":FzfLua lsp_document_symbols<CR>", desc = "Find Buffer Symbols" },
 			{ "<leader>fS", ":FzfLua lsp_workspace_symbols<CR>", desc = "Find Symbols" },
 			{ "<leader>fg", ":FzfLua git_status<CR>", desc = "Find Git" },
+			{ "<leader>f=", ":FzfLua spell_suggest<CR>", desc = "Find Spell Suggest" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", ":G<CR>", desc = "Git Menu" },
