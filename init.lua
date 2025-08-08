@@ -5,6 +5,7 @@ require("scripts/delete-buffer")
 -- require("scripts/files/smart-find")
 require("scripts/find-route")
 require("scripts/find-method")
+require("scripts/find-table")
 
 local language = require("scripts/language")
 language.setup()

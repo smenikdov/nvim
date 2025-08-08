@@ -36,7 +36,18 @@ return {
             actions = {
                 files = {
                     ["enter"] = actions.file_edit_or_qf,
-                    ["ctrl-k"] = { fn = actions.file_sel_to_qf, prefix = "select-all" },
+                    ["ctrl-b"] = { fn = actions.file_sel_to_qf, prefix = "select-all" },
+                },
+            },
+
+            registers = {
+                actions = {
+                    ['default'] = function(selected, opts)
+                        local reg = string.sub(selected[1], 2, 2)
+                        if reg then
+                            vim.api.nvim_feedkeys('"' .. reg, 'n', true);
+                        end
+                    end,
                 },
             },
 

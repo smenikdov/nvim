@@ -127,7 +127,7 @@ return {
 			{ "<leader>fb", ":FzfLua buffers<CR>", desc = "Find Buffer" },
 			{ "<leader>fm", ":FzfLua marks<CR>", desc = "Find Mark" },
 			{ "<leader>fi", ":FzfLua blines<CR>", desc = "Find In Buffer" },
-			{ "<leader>fp", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Pattern" },
+			{ "<leader>f\"", ":FzfLua registers<CR>", desc = "Find Paste", mode = { "n", "v" } },
 			{ "<leader>fz", ":FzfLua zoxide<CR>", desc = "Find Zoxide" },
 			{ "<leader>fh", ":FzfLua helptags<CR>", desc = "Find Help" },
 			{ "<leader>fq", ":FzfLua quickfix<CR>", desc = "Find Quickfix" },
@@ -135,6 +135,7 @@ return {
 			{ "<leader>fS", ":FzfLua lsp_workspace_symbols<CR>", desc = "Find Symbols" },
 			{ "<leader>fg", ":FzfLua git_status<CR>", desc = "Find Git" },
 			{ "<leader>f=", ":FzfLua spell_suggest<CR>", desc = "Find Spell Suggest" },
+			{ "<leader>fp", ":FzfLua files cwd=~/.config/nvim/templates<CR>", desc = "Find Pattern" },
 
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", ":G<CR>", desc = "Git Menu" },
